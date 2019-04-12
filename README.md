@@ -44,7 +44,7 @@ Leave this running in the background.
 
 Now, switch back to your original CMD and write
 ```
-docker compose-build web
+docker-compose build web
 ```
 
 This will build out the environment for your instance of Truman, and install a bunch of stuff.
