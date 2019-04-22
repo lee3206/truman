@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
+  //Making this false for a test!!!
   email: { type: String, unique: true },
   password: String,
   passwordResetToken: String,
@@ -20,7 +21,7 @@ const userSchema = new mongoose.Schema({
 
   lastNotifyVisit: Date,
 
-  mturkID: String,
+  //mturkID: String,//removing for testing
 
   group: String, //full group type
   ui: String,    //just UI type (no or ui)
@@ -120,7 +121,7 @@ userSchema.methods.comparePassword = function comparePassword(candidatePassword,
  * Add Log to User if access is 1 hour from last use.
  */
 userSchema.methods.logUser = function logUser(time, agent, ip) {
-  
+
   if(this.log.length > 0)
   {
     var log_time = new Date(this.log[this.log.length -1].time);
@@ -193,7 +194,7 @@ userSchema.methods.getPostsAndReplies = function getPostsAndReplies() {
 
 //Return the user post from its ID
 userSchema.methods.getUserPostByID = function(postID) {
-  
+
   return this.posts.find(x => x.postID == postID);
 
 };
@@ -201,19 +202,19 @@ userSchema.methods.getUserPostByID = function(postID) {
 
 //Return the user reply from its ID
 userSchema.methods.getUserReplyByID = function(replyID) {
-  
+
   return this.posts.find(x => x.replyID == replyID);
 
 };
 
 //Return the user reply from its ID
 userSchema.methods.getActorReplyByID = function(actorReplyID) {
-  
+
   return this.posts.find(x => x.actorReplyID == actorReplyID);
 
 };
 
-//get user posts within the min/max time period 
+//get user posts within the min/max time period
 userSchema.methods.getPostInPeriod = function(min, max) {
     //concat posts & reply
     return this.posts.filter(function(item) {

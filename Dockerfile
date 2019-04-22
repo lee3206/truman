@@ -6,7 +6,7 @@ COPY .env.example /starter/.env.example
 
 WORKDIR /starter
 
-RUN npm install 
+RUN npm install
 
 CMD ["npm","start"]
 

@@ -21,9 +21,11 @@ const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 var schedule = require('node-schedule');
 
+//multer is how we send files (like images) thru web forms
 const multer = require('multer');
 //Math.random().toString(36)+'00000000000000000').slice(2, 10) + Date.now()
 
+//multer options for basic files
 var m_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads') ,
   filename: function (req, file, cb) {
     var prefix = req.user.id + Math.random().toString(36).slice(2, 10);
@@ -31,6 +33,7 @@ var m_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads
   }
 });
 
+//multer options for uploading a post (user created post)
 var userpost_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads/user_post') ,
   filename: function (req, file, cb) {
     var lastsix = req.user.id.substr(req.user.id.length - 6);
@@ -39,6 +42,7 @@ var userpost_options = multer.diskStorage({ destination : path.join(__dirname, '
   }
 });
 
+//multer options for uploading a user profile image
 var useravatar_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads/user_post') ,
   filename: function (req, file, cb) {
     var prefix = req.user.id + Math.random().toString(36).slice(2, 10);
@@ -98,29 +102,29 @@ mongoose.connection.on('error', (err) => {
 var rule = new schedule.RecurrenceRule();
 rule.hour = 4;
 rule.minute = 55;
- 
+
 var j = schedule.scheduleJob(rule, function(){
   console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
   console.log('@@@@@@######@@@@@@@@Sending Mail to All USER!!!!!');
   console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
   userController.mailAllActiveUsers();
-}); 
+});
 
 
 /****
-**CRON JOBS 
+**CRON JOBS
 **Check if users are still active
 */
 var rule = new schedule.RecurrenceRule();
 rule.hour = 4;
 rule.minute = 30;
- 
+
 var j = schedule.scheduleJob(rule, function(){
   console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
   console.log('@@@@@@######@@@@@@@@Checking if Users are active!!!!!');
   console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
   userController.stillActive();
-}); 
+});
 
 
 /**
@@ -273,7 +277,7 @@ app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 
 //See actors
-//app.get('/actors', actorsController.getActors);
+app.get('/actors', actorsController.getActors);
 
 app.get('/user/:userId', passportConfig.isAuthenticated, actorsController.getActor);
 app.post('/user', passportConfig.isAuthenticated, actorsController.postBlockOrReport);

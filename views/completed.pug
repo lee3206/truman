@@ -2,7 +2,7 @@ extends ui_layout
 
 block content
 
-  .sixteen.wide.column 
+  .sixteen.wide.column
     br
     table.ui.celled.padded.table
       thead
@@ -19,14 +19,13 @@ block content
         tbody
           tr
             td=u.email
-            td.single.line=u.mturkID
+            //td.single.line=u.mturkID
             td=u.createdAt
             td=u.group
             td=u.completed
-            td=u.log.length 
+            td=u.log.length
             td=u.numPosts + 1
             td=u.numReplies + 1
     br
     br
     br
-
