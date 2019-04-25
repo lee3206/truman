@@ -1,11 +1,12 @@
 #! /usr/bin/env node
 
-console.log('This script is running!!!!');
-
+console.log('populate.js data script is running!!!!');
 
 var async = require('async');
+
 var Actor = require('./models/Actor.js');
 var Script = require('./models/Script.js');
+var Notification = require('./models/Notification.js')
 const _ = require('lodash');
 const dotenv = require('dotenv');
 var mongoose = require('mongoose');
@@ -16,12 +17,22 @@ Todo:
 Figure out if final_actors json files are appropriate for posting
 Modify variables for those
 *************************/
-
+var actors_list;
+var notifications_list;
+var final_script;
 //From truman_testdrive rebuild (we need: actors, notifications, replys(?), and a script)
-var actors_list= require('./final_data/final_actors.json');
-var notifications_list= require('./final_data/test_notifications.json');
-//A script is synonomous with posts
-var final_script = require('./final_data/final_script.json');
+async function readData() {
+  try{
+    actors_list= require('./final_data/final_actors.json');
+    notifications_list= require('./final_data/test_notifications.json');
+    //A script is synonomous with posts
+    final_script = require('./final_data/final_script.json');
+  }
+  catch(err) {
+    console.log('Error occured when trying to read data', err);
+  }
+}
+
 
 
 //Messing with this by commenting out things that aren't beeing called, changing to json files in FINAL_DATA folder
@@ -43,13 +54,14 @@ var options = {
   replset: {socketOptions: {keepAlive: 1, connectTimeoutMS: 30000}}
 };
 //var connection = mongo.connect('mongodb://127.0.0.1/test');
-mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI,options);
+mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI);
 var db = mongoose.connection;
 mongoose.connection.on('error', (err) => {
   console.error(err);
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
   process.exit();
 });
+/*
 db.once('open', function(){
   dropCollections();
   for (var i = 0, len = actors_list.length; i < len; i++) {
@@ -68,6 +80,7 @@ db.once('open', function(){
 }).then(function){
     mongoose.connection.close();
 };
+*/
 
 /*
 drop existing collections before loading
@@ -75,11 +88,11 @@ to make sure we dont overwrite the data
 incase we run the script twice or more
 */
 function dropCollections() {
-    db.collections['actors'].drop(function (err) {
-        console.log('actors collection dropped');
+    db.collections['actor'].drop(function (err) {
+        console.log('actor collection dropped');
     });
-    db.collections['scripts'].drop(function (err) {
-        console.log('scripts collection dropped');
+    db.collections['script'].drop(function (err) {
+        console.log('script collection dropped');
     });
 }
 
@@ -138,7 +151,37 @@ function highActorCreate(random_actor) {
 ********/
 
 //THIS MUST BE CALLED FIRST TO CREATE ACTORS
+//TRYING SOMETHING NEWSSWWSA
+function createActorInstances(){
 
+  async.each(actors_list, function (actor_raw,callback) {
+      actordetail = {};
+      actordetail.profile = {};
+      actordetail.profile.name = actor_raw.name
+      actordetail.profile.location = actor_raw.location;
+      actordetail.profile.picture = actor_raw.picture;
+      actordetail.profile.bio = actor_raw.bio;
+      actordetail.profile.age = actor_raw.age;
+      //actordetail.class = actor_raw.class;
+      actordetail.username = actor_raw.username;
+      var actor = new Actor(actordetail);
+
+      actor.save(function (err){
+        if (err){
+          console.log("Something is bad!!!");
+          return -1;
+        }
+        console.log('New Actor: '+actor.username);
+        callback();
+      });
+    },
+      function (err) {
+        console.log("ALL DONE YA SHITS");
+        return 'Loaded Actors'
+      }
+  );
+}
+/*
 function ActorCreate(actor1) {
 
 
@@ -163,7 +206,7 @@ function ActorCreate(actor1) {
     console.log('New Actor: ' + actor.username);
   });
 }
-
+*/
 /*
 function PostCreate(new_post) {
 
@@ -336,6 +379,31 @@ make posts
 make comments
 ********************************/
 /*
+promisify function will convert a function call to promise
+which will eventually resolve when function completes its execution,
+additionally it will wait for 2 seconds before starting.
+*/
+function promisify(inputFunction) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(inputFunction());
+    }, 2000);
+  });
+}
+
+async function loadDatabase(){
+  try{
+    await promisify(dropCollections);
+    await promisify(readData);
+    await promisify(createActorInstances);
+  } catch (err) {
+    console.log('Error occured in Loading', err);
+  }
+}
+
+loadDatabase();
+/*
+
 dropCollections();
 for (var i = 0, len = actors_list.length; i < len; i++) {
 
