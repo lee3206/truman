@@ -8,24 +8,22 @@ const _ = require('lodash');
  * GET /
  * List of Script posts for Feed
 */
-exports.getScript = (req, res) => {
+exports.getScript = (req, res, next) => {
 
   //req.user.createdAt
   var time_now = Date.now();
   var time_diff = time_now - req.user.createdAt;
-  //var today = moment();
-  //var tomorrow = moment(today).add(1, 'days');
   var time_limit = time_diff - 86400000; //one day in milliseconds
 
   var user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var userAgent = req.headers['user-agent'];
 
 
+  console.log("$#$#$#$#$#$#$START GET SCRIPT$#$#$$#$#$#$#$#$#$#$#$#$#");
+  //console.log("FROM SCRIPTS: time_diff  is now "+time_diff);
+  //console.log("FROM SCRIPTS: time_limit  is now "+time_limit);
 
-  console.log("FROM SCRIPTS: time_diff  is now "+time_diff);
-  console.log("FROM SCRIPTS: time_limit  is now "+time_limit);
-
-  console.log("FROM SCRIPTS: USER ID is"+ req.user.id);
+  //console.log("FROM SCRIPTS: USER ID is "+ req.user.id);
   User.findById(req.user.id)
   .populate({
        path: 'posts.reply',
@@ -39,6 +37,10 @@ exports.getScript = (req, res) => {
        path: 'posts.actorAuthor',
        model: 'Actor'
     })
+  .populate({
+       path: 'posts.comments.actor',
+        model: 'Actor'
+    })
   .exec(function (err, user) {
   //User.findById(req.user.id, (err, user) => {
 
@@ -49,15 +51,16 @@ exports.getScript = (req, res) => {
       req.flash('errors', { msg: 'Account is no longer active. Study is over' });
       res.redirect('/login');
     }
-
+    //Loggs user
     user.logUser(time_now, userAgent, user_ip);
     console.log("User agent is : "+userAgent);
+
     Script.find()
       .where('time').lte(time_diff).gte(time_limit)
       .sort('-time')
       .populate('actor')
       .populate({
-       path: 'reply',
+       path: 'comments.actor',
        populate: {
          path: 'actor',
          model: 'Actor'

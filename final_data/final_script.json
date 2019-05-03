@@ -1,73 +1,48 @@
 [{
-	"_id": {
-		"$oid": "59794a258ecab254bb6a7bad"
-	},
-	"actor": {
-		"$oid": "5978ffc618bf097f8cf39ab7"
-	},
 	"body": "The spiralizer got some use for brunch today! #cleaneating #veggielife",
 	"post_id": 0,
 	"class": "cohort",
+	"actor": "M.Kapadia92",
 	"picture": "20170212_152905108_iOS.jpg",
 	"likes": 3,
 	"lowread": 7,
 	"highread": 180,
 	"time": -69900000
 }, {
-	"_id": {
-		"$oid": "59794a258ecab254bb6a7bae"
-	},
-	"actor": {
-		"$oid": "5978ffc618bf097f8cf39ab7"
-	},
 	"body": "GORGEOUS spread at Saigon House for my sister's b-day dinner!",
 	"post_id": 1,
 	"class": "cohort",
+	"actor": "M.Kapadia92",
 	"picture": "IMAG0003.jpg",
 	"likes": 5,
 	"lowread": 13,
 	"highread": 153,
 	"time": -38820000
 }, {
-	"_id": {
-		"$oid": "59794a258ecab254bb6a7baf"
-	},
-	"actor": {
-		"$oid": "5978ffc618bf097f8cf39ab7"
-	},
 	"body": "These tilapia fillets are CRAZY easy and super healthy! Just a sprinkle of dried dill, a squeeze of lemon, and 15 minutes in the oven!",
 	"post_id": 2,
 	"class": "cohort",
+	"actor": "M.Kapadia92",
 	"picture": "IMG_20170105_192151.jpg",
 	"likes": 1,
 	"lowread": 10,
 	"highread": 158,
 	"time": 2700000
 }, {
-	"_id": {
-		"$oid": "59794a258ecab254bb6a7bb0"
-	},
-	"actor": {
-		"$oid": "5978ffc618bf097f8cf39ab7"
-	},
 	"body": "When the light on the porch is so perfect it makes your leftovers look gourmet...",
 	"post_id": 3,
 	"class": "cohort",
+	"actor": "M.Kapadia92",
 	"picture": "james-harris-228578.jpeg",
 	"likes": 4,
 	"lowread": 18,
 	"highread": 164,
 	"time": 11760000
 }, {
-	"_id": {
-		"$oid": "59794a258ecab254bb6a7bb1"
-	},
-	"actor": {
-		"$oid": "5978ffc618bf097f8cf39ab7"
-	},
 	"body": "Mr. Matthews got me this hanger for my bananas... It's only been a day but I think they're already less beat-up than they would normally be!  Three cheers for modern technology.",
 	"post_id": 4,
 	"class": "cohort",
+	"actor": "M.Kapadia92",
 	"picture": "IMG_0440.JPG",
 	"likes": 2,
 	"lowread": 16,
