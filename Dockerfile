@@ -1,4 +1,4 @@
-FROM node:10.12.5
+FROM node:10
 
 COPY . /starter
 COPY package.json /starter/package.json
