@@ -20,13 +20,11 @@ To start with, you should download the following programs
 - [Node.js 8.0+](http://nodejs.org)
 - [Docker installation](https://docs.docker.com/engine/installation/)
 - [Common problems setting up docker](https://docs.docker.com/toolbox/faqs/troubleshoot/)
-
 4: ???
 
-Now, go into the Truman directory and make a file called .env (if you are using windows, you cannot do this from windows explorer. I recommend [Atom] (https://www.atom.io) as a text editor, but use whatever you prefer)
+Now, go into the Truman directory and make a file called .env (if you are using windows, you cannot do this from windows explorer. I recommend Atom (LINK) as a text editor, but use whatever you prefer)
 
-Copy/paste everything in the file called .env.example into .env.
-This is necessary, as .env stores all your important keys and other information that you don't want to share on github.
+Copy/paste everything in the file called .env.example into .env. This is necessary, as .env stores all your important keys and other information that you don't want to share on github.
 
 Next, start by opening the CMD and navigating (cd /yourdirectory) to where ever Truman is on your computer.
 
@@ -34,22 +32,25 @@ Ok, now open another CMD and run MongoDB by entering
 ```bash
 mongo
 ```
-If this doesn't work, see tutorial on adding [mongoDB] (https://closebrace.com/tutorials/2017-03-02/the-dead-simple-step-by-step-guide-for-front-end-developers-to-getting-up-and-running-with-nodejs-express-and-mongodb) to the PATH file.
+(if this doesnt work, see tutorial on adding mongoDB to the PATH file (LINK))
 
 You should see some text scroll by (LINK to MONGODB Tutorial) like this, and then enter
 ```bash
 use test
 ```
-to make a local database called test (which is the database that Truman looks for by default).
+to make a local database called test (which is the database that Truman looks for by default)
+
 Leave this running in the background.
 
 Now, switch back to your original CMD and write
 ```
 docker-compose build web
 ```
+
 This will build out the environment for your instance of Truman, and install a bunch of stuff.
 
 At the end you should see
+
 ```bash
 Successfully built 32204b468713
 Successfully tagged truman_web:latest
@@ -59,14 +60,3 @@ Next, try
 ```
 docker-compose up web
 ```
-If everything is working correctly you should now see something like this:
-```
-App is running at http://localhost:3000 in development mode
-Press CTRL-C to stop
-```
-Congratulations! Navigate to the local host by copying that into your favorite browser and you should be up and running!
-
-Todo
-
-- Figure out how to see what info mongoDB is holding
-- Make sure that populate is really populating the database (looking in final_script and final_actors)

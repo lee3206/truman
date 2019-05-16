@@ -54,30 +54,30 @@ mongoose.connection.on('error', (err) => {
 
 User.find()
   .where('active').equals(false)
-  .populate({
+  .populate({ 
          path: 'feedAction.post',
          model: 'Script',
          populate: {
            path: 'actor',
            model: 'Actor'
-         }
+         } 
       })
-  .exec(
+  .exec(    
     function(err, users){
 
       mlm_writer.pipe(fs.createWriteStream('results/mlm_eatsnaplove.csv'));
       s_writer.pipe(fs.createWriteStream('results/sur_eatsnaplove.csv'));
       summary_writer.pipe(fs.createWriteStream('results/sum_eatsnaplove.csv'));
 
-      for (var i = users.length - 1; i >= 0; i--)
+      for (var i = users.length - 1; i >= 0; i--) 
       {
 
         var mlm = {};
         var sur = {};
         var sums = {};
-        //mlm.id = users[i].mturkID;
-        //sur.id = users[i].mturkID;
-        //sums.id = users[i].mturkID;
+        mlm.id = users[i].mturkID;
+        sur.id = users[i].mturkID;
+        sums.id = users[i].mturkID;
 
 
         mlm.email = users[i].email;
@@ -174,9 +174,9 @@ User.find()
           }
           else
             mlm.Device = "Computer";
+        
 
-
-
+        
           sur.Device = mlm.Device;
 
           mlm.Broswer = parser.setUA(users[i].log[0].userAgent).getBrowser().name;
@@ -195,7 +195,7 @@ User.find()
           sur.OS = "NA";
 
         }
-
+        
 
         mlm.notificationpage = 0;
         mlm.numberbullypage = 0;
@@ -246,9 +246,9 @@ User.find()
         var bullyReads = 0;
         var bullyReadTimes = 0;
         var bullyFlag = 0;
-
+        
         //per feedAction
-        for (var k = users[i].feedAction.length - 1; k >= 0; k--)
+        for (var k = users[i].feedAction.length - 1; k >= 0; k--) 
         {
           //is a bully message
           if(users[i].feedAction[k].post.id == bully_messages[0] || users[i].feedAction[k].post.id == bully_messages[1] || users[i].feedAction[k].post.id == bully_messages[2]||users[i].feedAction[k].post.id == bully_messages[3])
@@ -271,13 +271,13 @@ User.find()
             if(users[i].feedAction[k].readTime[0])
             {
               bullyReads++;
-              bullyReadTimes += users[i].feedAction[k].readTime.sum() / users[i].feedAction[k].readTime.length;
+              bullyReadTimes += users[i].feedAction[k].readTime.sum() / users[i].feedAction[k].readTime.length; 
             }
 
           }
 
           //not a bully message
-          else
+          else 
           {
             //Victim stats
             if (users[i].feedAction[k].post.actor.id == victim)
@@ -324,7 +324,7 @@ User.find()
             {
               mlm.TotalNonBullyPostRead++;
               mlm.AveReadTime += users[i].feedAction[k].readTime.sum() / users[i].feedAction[k].readTime.length;
-
+              
             }
           }
 
@@ -338,14 +338,14 @@ User.find()
         mlm.GeneralPostNumber = users[i].numPosts + 1;
 
         //per bully post 1-4
-        for (var n = 0; n < bully_messages.length; n++)
-        {
+        for (var n = 0; n < bully_messages.length; n++) 
+        {  
           //console.log(" Bully message  "+ n);
 
           var temp_mlm = {};
           temp_mlm = JSON.parse(JSON.stringify(mlm));
 
-
+          
 
           var feedIndex = _.findIndex(users[i].feedAction, function(o) { return o.post.id == bully_messages[n]; });
 
@@ -360,7 +360,7 @@ User.find()
               temp_mlm.BullyPostAverageReadTime = users[i].feedAction[feedIndex].readTime.sum() / users[i].feedAction[feedIndex].readTime.length;
               temp_mlm.BullyPostNumOfReadTimes = users[i].feedAction[feedIndex].readTime.length;
             }
-            else
+            else 
             {
               temp_mlm.BullyPostLastReadTime = -1;
               temp_mlm.BullyPostAverageReadTime = 0
@@ -372,7 +372,7 @@ User.find()
               temp_mlm.Flag = 1;
               temp_mlm.FlagTime = users[i].feedAction[feedIndex].flagTime[0];
             }
-            else
+            else 
             {
               temp_mlm.Flag = 0;
               temp_mlm.FlagTime = 0;
@@ -383,7 +383,7 @@ User.find()
               temp_mlm.Like = 1;
               temp_mlm.LikeTime = users[i].feedAction[feedIndex].likeTime[0];
             }
-            else
+            else 
             {
               temp_mlm.Like = 0;
               temp_mlm.LikeTime = 0;
@@ -394,7 +394,7 @@ User.find()
               temp_mlm.Reply = 1;
               temp_mlm.ReplyTime = users[i].feedAction[feedIndex].replyTime[0];
             }
-            else
+            else 
             {
               temp_mlm.Reply = 0;
               temp_mlm.ReplyTime = 0;
@@ -413,7 +413,7 @@ User.find()
           {
             temp_mlm.BullyingPost  = n + 1;
             //console.log(":"+temp_mlm.BullyingPost+" ELSE temp_mlm Bully message");
-
+            
             temp_mlm.BullyPostLastReadTime = 0;
             temp_mlm.BullyPostAverageReadTime = 0;
             temp_mlm.BullyPostNumOfReadTimes = 0;
@@ -520,7 +520,7 @@ User.find()
       //console.log("writing Bully Post "+ mlm_array[zz].BullyingPost);
       mlm_writer.write(mlm_array[zz]);
     }
-
+      
     mlm_writer.end();
     s_writer.end();
     summary_writer.end();
@@ -528,3 +528,4 @@ User.find()
     mongoose.connection.close();
 
   });
+

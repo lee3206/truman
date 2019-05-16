@@ -6,7 +6,7 @@ COPY .env /starter/.env
 
 WORKDIR /starter
 
-RUN npm install
+RUN npm install 
 
 RUN npm audit fix
 
