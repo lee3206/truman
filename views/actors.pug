@@ -6,7 +6,7 @@ block content
 
   ul
     for actor in actors
-      li= actor.profile.name
-      li= actor.profile.location
-      li: img(src=actor.profile.picture, class='profile', width='100', height='100')
-      li= actor.profile.bio
+      li= actor.name
+      li= actor.location
+      li: img(src=actor.picture, class='profile', width='100', height='100')
+      li= actor.bio

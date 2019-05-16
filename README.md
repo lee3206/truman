@@ -66,7 +66,32 @@ Press CTRL-C to stop
 ```
 Congratulations! Navigate to the local host by copying that into your favorite browser and you should be up and running!
 
-Todo
+But wait! Something is missing. If you sign in and create an account, there isn't any activity there!
+Where are all the actors!?
 
-- Figure out how to see what info mongoDB is holding
-- Make sure that populate is really populating the database (looking in final_script and final_actors)
+Well, you need to place them into the database. Currently, nothing is in there.
+
+To fix this, go into docker. I'm sure there is another way to do this, but here is how i do it.
+
+First, download the Kitematic Docker visualizer. Then, click the EXEC button to create a CMD within the docker!
+
+From here, type
+
+```
+node populate.js
+```
+You should see some text scroll up about adding some actors and posts. These are drawn from the folder "final_data" in truman.
+If you decide to edit this data (You probably should to fit with your project) this is where you will go.
+
+Anyway, if this has worked correctly, try refreshing your localhost browser. You should now be displaying a bunch of posts!
+
+Congrats, you have a fake social media network that you can start to play around it.
+
+======================================================
+Step 2: Doing something interesting
+
+Ok, you've got a version of Truman running, but it's not exactly what you want. We can fix that!
+
+(I mean, you can. I'm just some text.)
+
+TODO:

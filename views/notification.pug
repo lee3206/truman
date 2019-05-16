@@ -1,10 +1,10 @@
 extends ui_layout
-  
+
 block content
 
-  
-  
-  .computer.only.tablet.only.four.wide.column 
+
+
+  .computer.only.tablet.only.four.wide.column
     .ui.card
       //- this is the for user card - does not show up on mobile
       .image
@@ -37,15 +37,15 @@ block content
                   if best.length == 1
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |   has read your post. 
+                      |   has read your post.
                       .date=val.time
-                  else 
+                  else
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |  and 
+                      |  and
                       //-a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
                       a(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have read your post.  
+                      | have read your post.
                       .date=val.time
               .ui.small.long.extrausers.modal(id=val.key)
                 .image.centered.content
@@ -71,15 +71,15 @@ block content
                   if best.length == 1
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |   has liked your post. 
+                      |   has liked your post.
                       .date=val.time
-                  else 
-                    .summary 
+                  else
+                    .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |  and 
+                      |  and
                       a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have liked your post. 
-                      .date=val.time  
+                      | have liked your post.
+                      .date=val.time
             when 'reply_read'
               - var best = val.actors.splice(0, 5);
               .event
@@ -96,15 +96,15 @@ block content
                   if best.length == 1
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      | has read your reply to #{val.originalActor.profile.name}'s post. 
+                      | has read your reply to #{val.originalActor.profile.name}'s post.
                       .date=val.time
-                  else 
+                  else
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |  and 
+                      |  and
                       //-a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
                       a(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have read your reply to #{val.originalActor.profile.name}'s post.  
+                      | have read your reply to #{val.originalActor.profile.name}'s post.
                       .date=val.time
               .ui.small.long.extrausers.modal(id=val.key)
                 .image.centered.content
@@ -131,15 +131,15 @@ block content
                   if best.length == 1
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |   has liked your reply to #{val.originalActor.profile.name}'s post. 
+                      |   has liked your reply to #{val.originalActor.profile.name}'s post.
                       .date=val.time
-                  else 
+                  else
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |  and 
+                      |  and
                       a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have liked your reply to #{val.originalActor.profile.name}'s post. 
-                      .date=val.time                                              
+                      | have liked your reply to #{val.originalActor.profile.name}'s post.
+                      .date=val.time
             when 'actor_reply_read'
               - var best = val.actors.splice(0, 5);
               .event
@@ -155,12 +155,12 @@ block content
                   if best.length == 1
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      | has read #{val.originalActor.profile.name}'s reply to your post. 
+                      | has read #{val.originalActor.profile.name}'s reply to your post.
                       .date=val.time
-                  else 
+                  else
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |  and 
+                      |  and
                       a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
                       | have read #{val.originalActor.profile.name}'s reply to your post.
                       .date=val.time
@@ -188,15 +188,15 @@ block content
                   if best.length == 1
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |   has liked #{val.originalActor.profile.name}'s reply to your post. 
+                      |   has liked #{val.originalActor.profile.name}'s reply to your post.
                       .date=val.time
-                  else 
+                  else
                     .summary
                       a(href='/user/'+best[0].username)=best[0].profile.name
-                      |  and 
+                      |  and
                       a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have liked #{val.originalActor.profile.name}'s reply to your post. 
-                      .date=val.time   
+                      | have liked #{val.originalActor.profile.name}'s reply to your post.
+                      .date=val.time
             when 'reply'
               .event
                 .label
@@ -211,7 +211,5 @@ block content
                       span=val.actor.profile.name
                     |  has replied to your post.
                   .extra.text=val.replyBody
-                  
+
             default
-        
-              

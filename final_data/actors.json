@@ -3,272 +3,230 @@
      "id":1,
       "class":"cohort",
       "username":"M.Kapadia92",
-      "profile":{
          "name":"Mo Kapadia",
          "gender":"Male",
          "location":"New York, NY",
          "picture":"0.jpg",
          "bio":"Foodie 🍲, photographer 📷, traveller ✈️, (aspiring) restaurant critic.",
          "age":27
-      }
    },
    {
      "id":2,
       "class":"normal",
       "username":"SnakeCharmer",
-      "profile":{
          "name":"Bao Reynolds",
          "gender":"Male",
          "location":"Houston, TX",
          "picture":"139.jpg",
          "bio":"love to travel and eat!",
          "age":23
-      }
    },
    {
       "id":3,
       "class":"normal",
       "username":"livelaughlove",
-      "profile":{
          "name":"Elizabeth Newman",
          "gender":"Female",
          "location":"McLane, VA",
          "picture":"150.jpg",
          "bio":"love my husband, kids, and creative cooking... oh, and don't forget the wine!",
          "age":35
-      }
    },
    {
      "id":4,
       "class":"bully",
       "username":"bblueberryy",
-      "profile":{
          "name":"Emma Hanson",
          "gender":"Female",
          "location":"Jefferson City, MO",
          "picture":"155.jpg",
          "bio":"living the vegan life since 2002! Ask me about my fav plant-based recipes!",
          "age":26
-      }
    },
    {
      "id":5,
       "class":"cohort",
       "username":"ancho-n-cayenne",
-      "profile":{
          "name":"Yalonda Carter",
          "gender":"Female",
          "location":"Baltimore, MD",
          "picture":"165.jpg",
          "bio":"The spice of life... is spice! 🌶️🌶️",
          "age":31
-      }
    },
    {
      "id":6,
       "class":"normal",
       "username":"john73",
-      "profile":{
          "name":"John Roberts",
          "gender":"Male",
          "location":"Seattle, WA",
          "picture":"23.jpg",
          "bio":"I love my kids, my wife, and my '73 mustang.",
          "age":31
-      }
    },
    {
      "id":7,
       "class":"cohort",
       "username":"coachmatthews",
-      "profile":{
          "name":"Eva Matthews",
          "gender":"Female",
          "location":"Boston, MA",
          "picture":"37.jpg",
          "bio":"Mom, foodie, gymnastics coach. Nutrition is strength!",
          "age":32
-      }
    },
    {
      "id":8,
       "class":"normal",
       "username":"NoahM1121",
-      "profile":{
          "name":"Noah Marshall",
          "gender":"Male",
          "location":"Philadelphia, PA",
          "picture":"4.jpg",
          "bio":"breakfast all day",
          "age":28
-      }
    },
    {
      "id":9,
       "class":"normal",
       "username":"MannyDL34",
-      "profile":{
          "name":"Manuel De Leon",
          "gender":"Male",
          "location":"Burbank, CA",
          "picture":"6.jpg",
          "bio":"gotta eat em all",
          "age":30
-      }
    },
    {
      "id":10,
       "class":"normal",
       "username":"sweetpea",
-      "profile":{
          "name":"Ananya Agarwal",
          "gender":"Female",
          "location":"San Francisco, CA",
          "picture":"8.jpg",
          "bio":"the best thing in life is seeing my mom's face when I cook for *her* for a change",
          "age":25
-      }
    },
    {
       "id":11,
       "class":"normal",
       "username":"mateoV",
-      "profile":{
          "name":"Mateo Valdez",
          "gender":"Male",
          "location":"Anaheim, CA",
          "picture":"image-09.png",
          "bio":"burgers beer \u0026baseball",
          "age":40
-      }
    },
    {
      "id":12,
       "class":"normal",
       "username":"artisanalways",
-      "profile":{
          "name":"Riya",
          "gender":"Female",
          "location":"North Hempstead, NY",
          "picture":"image-12.png",
          "bio":"artisan mugs and artisan hugs",
          "age":27
-      }
    },
    {
      "id":13,
       "class":"normal",
       "username":"Jcole9",
-      "profile":{
          "name":"Josiah Coleman",
          "gender":"Male",
          "location":"Charlotte, NC",
          "picture":"image-120.png",
          "bio":"Sharing Momma's Carolina BBQ with the world.",
          "age":48
-      }
    },
    {
      "id":14,
       "class":"normal",
       "username":"_aikira_",
-      "profile":{
          "name":"Aikira Walker",
          "gender":"Female",
          "location":"Austin, TX",
          "picture":"image-13.png",
          "bio":"~~friends, food \u0026 sunshine~~",
          "age":21
-      }
    },
    {
      "id":15,
       "class":"normal",
       "username":"fusionfeast",
-      "profile":{
          "name":"Max Cho",
          "gender":"Male",
          "location":"Newark, NJ",
          "picture":"image-14.png",
          "bio":"Korean-Mexican fusion, inside and out.",
          "age":23
-      }
    },
    {
      "id":16,
       "class":"cohort",
       "username":"lee.alexa",
-      "profile":{
          "name":"Alexa Lee",
          "gender":"Female",
          "location":"Plano, TX",
          "picture":"image-15.png",
          "bio":"blogger, dreamer, traveller, chef",
          "age":25
-      }
    },
    {
      "id":17,
       "class":"normal",
       "username":"ria_camiii",
-      "profile":{
          "name":"Valeria Camilo",
          "gender":"Female",
          "location":"Wichita, KA",
          "picture":"image-18.png",
          "bio":"a smile is never the wrong decision",
          "age":28
-      }
    },
    {
      "id":18,
       "class":"normal",
       "username":"caffeinated",
-      "profile":{
          "name":"Tiana Brown",
          "gender":"Female",
          "location":"Colombus, OH",
          "picture":"image-23.png",
          "bio":"still trying to make the perfect #cappucino",
          "age":34
-      }
    },
    {
       "id":19,
       "class":"normal",
       "username":"earthpulse",
-      "profile":{
          "name":"Sophia P.",
          "gender":"Female",
          "location":"Jersey City, NJ",
          "picture":"image-29.png",
          "bio":"**food**photos**earth-friendly fashion**",
          "age":27
-      }
    },
    {
       "id":20,
       "class":"vicitim",
       "username":"casssssssssie",
-      "profile":{
          "name":"Cassie Reed",
          "gender":"Female",
          "location":"White Plains, NY",
          "picture":"image-31.png",
          "bio":"Adulting is hard so I'm taking pics to prove to myself that I can do it!",
          "age":24
-      }
    },
    {
       "id":21,
       "class":"normal",
       "username":"breethebaker",
-      "profile":{
          "name":"Breanne Carman-Hines",
          "gender":"Female",
          "location":"Salt Lake City, UT",
          "picture":"image-41.png",
          "bio":"sweet baking, savory baking... if the oven's on, I'm in.",
-         "age":27
-      }
+         "age": 27
    }]

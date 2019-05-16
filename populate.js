@@ -117,6 +117,7 @@ function createActorInstances() {
 
   async.each(actors_list, function(actor1, callback){
     actordetail = {};
+    /*removing profile
     actordetail.profile = {};
     actordetail.profile.name = actor1.name
     actordetail.profile.gender = actor1.gender;
@@ -124,6 +125,13 @@ function createActorInstances() {
     actordetail.profile.picture = actor1.picture;
     actordetail.profile.bio = actor1.bio;
     actordetail.profile.age = actor1.age;
+    */
+    actordetail.name = actor1.name
+    actordetail.gender = actor1.gender;
+    actordetail.location = actor1.location;
+    actordetail.picture = actor1.picture;
+    actordetail.bio = actor1.bio;
+    actordetail.age = actor1.age;
     actordetail.class = actor1.class;
     actordetail.username = actor1.username;
 
@@ -150,7 +158,6 @@ createPostInstances:
 Creates each post and uploads it to the DB
 Actors must be in DB first to add them correctly to the post
 *************************/
-//getting stuck here, doesn't appear to be working currently :(
 function createPostInstances(){
   async.each(final_script, function(new_post, callback){
     Actor.findOne({ username :new_post.actor}, (err, act) => {
@@ -169,7 +176,7 @@ function createPostInstances(){
         postdetail.highread = new_post.highread;
         postdetail.actor = act;
 
-        postdetail.time = new_post.time;
+        postdetail.time = timeStringToNum(new_post.time);
 
         var script = new Script(postdetail);
         script.save(function (err){
@@ -208,13 +215,10 @@ function createPostRepliesInstances(){
               var comment_detail = new Object();
               comment_detail.body = new_replies.body
               comment_detail.commentID = new_replies.id;
-              comment_detail.module = new_replies.module;
               comment_detail.likes = getLikesComment();
               comment_detail.time = timeStringToNum(new_replies.time);
               //1 hr is 3600000
               comment_detail.actor = act;
-              //pr.comments = insert_order(comment_detail, pr.comments);
-              //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length before: ' + pr.comments.length);
               pr.comments.push(comment_detail);
               pr.comments.sort(function (a, b) { return a.time - b.time; });
 
@@ -224,7 +228,7 @@ function createPostRepliesInstances(){
                   console.log("Error IN: " + new_replies.id);
                   callback(err);
                 }
-                console.log('Added new Comment to Post: ' + pr.id);
+                console.log('Added new Comment to Post: ' + pr.post_id);
                 callback();
               });
             }
@@ -256,31 +260,6 @@ function createPostRepliesInstances(){
   );
 }
 
-
-function actorNotifyCreate(new_notify) {
-
-  Actor.findOne({ username: new_notify.actor}, (err, act) => {
-    if (err) { console.log(err); return next(err); }
-
-    console.log('Looking up Actor ID is : ' + act._id);
-    var notifydetail = new Object();
-    notifydetail.userPost = new_notify.userPostId;
-    notifydetail.actor = {};
-    notifydetail.notificationType = 'reply';
-    notifydetail.replyBody = new_notify.body;
-    notifydetail.actor.$oid = act._id.toString();
-    notifydetail.time = timeStringToNum(new_notify.time);
-
-    //console.log('Looking up Actor: ' + act.username);
-    //console.log(mongoose.Types.ObjectId.isValid(notifydetail.actor.$oid));
-    //console.log(notifydetail);
-
-    //fs.appendFileSync('upload_actorReplyV2.json', JSON.stringify(notifydetail));
-
-  });
-
-};
-
 /*
 promisify function will convert a function call to promise
 which will eventually resolve when function completes its execution,
@@ -302,16 +281,14 @@ make actor
 make posts
 make comments
 ********************************/
-/*
 
-*/
 async function loadDatabase(){
   try{
     await readData(); //reading data from JSON files
     await promisify(dropCollections);//drops existing collections
     await promisify(createActorInstances); //creates all of the actors
-    await promisify(createPostInstances);
-    await promisify(createPostRepliesInstances);
+    await promisify(createPostInstances); //creates their posts
+    await promisify(createPostRepliesInstances); //creates replies to the posts
   }catch (err){
     console.log('Error occurred in loading into DB', err);
   }

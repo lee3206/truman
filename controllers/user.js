@@ -166,19 +166,29 @@ exports.postSignup = (req, res, next) => {
     return res.redirect('/signup');
   }
 
-  //random assignment of experimental group
+  /*****************************************
+  Generic Truman assumption is that there are NO experimental groups.
+  We set the generic to be notify: high, ui: no
+  THIS MEANS THE "YOU HAVE READ THIS POST" UI WILL NOT appear
+  THIS MEANS THAT THE ASSUMPTION IS THAT A "large" AMOUNT OF AGENTS WILL "view" A POST
+  Reactivate this code if you want to do something with random assignment to experimental groups
+  *****************************************/
   var result = ['no:no', 'no:low', 'no:high', 'ui:no', 'ui:low', 'ui:high'][Math.floor(Math.random() * 6)]
   var resultArray = result.split(':');
   const user = new User({
     email: req.body.email,
     password: req.body.password,
-    //removing for test
-    //mturkID: req.body.mturkID,
+    /************************************
+    removing for non-MTurk environment
+    mturkID: req.body.mturkID,
+    ************************************/
     username: req.body.username,
     group: result,
     active: true,
-    ui: resultArray[0], //ui or no
-    notify: resultArray[1], //no, low or high
+    ui: "no",
+    notify: "high",
+    //ui: resultArray[0], //ui or no
+    //notify: resultArray[1], //no, low or high
     lastNotifyVisit : Date.now()
   });
 

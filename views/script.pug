@@ -1,10 +1,10 @@
 extends ui_layout
-  
+
 block content
 
-  
-  
-  .computer.only.tablet.only.four.wide.column 
+
+
+  .computer.only.tablet.only.four.wide.column
     .ui.card
       .image
         if user.profile.picture
@@ -65,9 +65,9 @@ block content
                 .content
                   .right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
                   |
-                  a(href='/user/'+val.reply.actor.username)   
-                    img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
-                    span=val.reply.actor.profile.name
+                  a(href='/user/'+val.reply.actor.username)
+                    img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.picture)
+                    span=val.reply.actor.name
                 .content
                   if val.reply.picture
                     img.post.ui.left.floated.small.image(src=val.reply.picture)
@@ -142,7 +142,7 @@ block content
           else
             .content
               .right.floated.time.meta= (user.createdAt.getTime() + val.relativeTime)
-              |  
+              |
               a.ui.avatar.image(href='/me')
                 if user.profile.picture
                   img(src='/user_post/'+user.profile.picture)
@@ -188,7 +188,7 @@ block content
                         span="The admins will review this post further. We are sorry you had this experience."
           if user.ui == 'ui'
             //- if user is in UI condistion - add read dimmer to post
-            if val.read 
+            if val.read
               //- if user has already READ this post before - set dimmer to active (turn it on)
               .ui.inverted.active.read.dimmer
                 .content
@@ -199,17 +199,17 @@ block content
                     br
                     if user.notify != 'no'
                       h3.ui.icon.header
-                        img.ui.avatar.image(src='/profile_pictures/'+val.actor.profile.picture)
-                        span=" "+val.actor.profile.name+" "
+                        img.ui.avatar.image(src='/profile_pictures/'+val.actor.picture)
+                        span=" "+val.actor.name+" "
                         | has been notified
                         br
                         if val.reply
-                          img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
-                          span=" "+val.reply.actor.profile.name+" "
+                          img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.picture)
+                          span=" "+val.reply.actor.name+" "
                           | has been notified
                         br
                     br
-                    button.ui.black.button.reread Read Again?                
+                    button.ui.black.button.reread Read Again?
             else
               //- user has not read this post, but is in UI condistion, so add dimmer, but don't turn it on
               .ui.inverted.read.dimmer
@@ -221,13 +221,13 @@ block content
                     br
                     if user.notify != 'no'
                       h3.ui.icon.header
-                        img.ui.avatar.image(src='/profile_pictures/'+val.actor.profile.picture)
-                        span=" "+val.actor.profile.name+" "
+                        img.ui.avatar.image(src='/profile_pictures/'+val.actor.picture)
+                        span=" "+val.actor.name+" "
                         | has been notified
                         br
                         if val.reply
-                          img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
-                          span=" "+val.reply.actor.profile.name+" "
+                          img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.picture)
+                          span=" "+val.reply.actor.name+" "
                           | has been notified
                         br
                     br
@@ -239,9 +239,9 @@ block content
               .right.floated.time.meta= (user.createdAt.getTime() + val.time)
               |
               a.ui.avatar.image(href='/user/'+val.actor.username)
-                img(src='/profile_pictures/'+val.actor.profile.picture)
+                img(src='/profile_pictures/'+val.actor.picture)
               a(href='/user/'+val.actor.username)
-                span=val.actor.profile.name
+                span=val.actor.name
             .content
               .description(style="font-size:130%")=val.body
             .extra.content
@@ -249,9 +249,9 @@ block content
                 .content
                   .right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
                   |
-                  a(href='/user/'+val.reply.actor.username)   
-                    img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
-                    span=val.reply.actor.profile.name
+                  a(href='/user/'+val.reply.actor.username)
+                    img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.picture)
+                    span=val.reply.actor.name
                 .content
                   if val.reply.picture
                     img.post.ui.left.floated.small.image(src=val.reply.picture)
@@ -284,15 +284,15 @@ block content
                     i.heart.icon
                     |  Like
                   a.ui.basic.red.left.pointing.label.count=val.likes
-      
+
           else
             //- not a reply post - visualize like normal
             .content
               .right.floated.time.meta= (user.createdAt.getTime() + val.time)
-              |  
+              |
               a(href='/user/'+val.actor.username)
-                img.ui.avatar.image(src='/profile_pictures/'+val.actor.profile.picture)
-                span=val.actor.profile.name
+                img.ui.avatar.image(src='/profile_pictures/'+val.actor.picture)
+                span=val.actor.name
             .image
               img.post(src=val.picture)
               //-img(src='/picture.svg', data-src=val.picture)

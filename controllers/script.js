@@ -20,10 +20,6 @@ exports.getScript = (req, res, next) => {
 
 
   console.log("$#$#$#$#$#$#$START GET SCRIPT$#$#$$#$#$#$#$#$#$#$#$#$#");
-  //console.log("FROM SCRIPTS: time_diff  is now "+time_diff);
-  //console.log("FROM SCRIPTS: time_limit  is now "+time_limit);
-
-  //console.log("FROM SCRIPTS: USER ID is "+ req.user.id);
   User.findById(req.user.id)
   .populate({
        path: 'posts.reply',
@@ -53,7 +49,6 @@ exports.getScript = (req, res, next) => {
     }
     //Loggs user
     user.logUser(time_now, userAgent, user_ip);
-    console.log("User agent is : "+userAgent);
 
     Script.find()
       .where('time').lte(time_diff).gte(time_limit)
@@ -86,7 +81,7 @@ exports.getScript = (req, res, next) => {
           });
 
         while(script_feed.length || user_posts.length) {
-          console.log(typeof script_feed[0] === 'undefined');
+          //console.log(typeof script_feed[0] === 'undefined');
           //console.log(user_posts[0].relativeTime);
           //console.log(feed[0].time)
           if(typeof script_feed[0] === 'undefined') {
@@ -107,7 +102,65 @@ exports.getScript = (req, res, next) => {
             if(feedIndex!=-1)
             {
               //console.log("WE HAVE AN ACTION!!!!!");
+              //check to see if there are comments - if so remove ones that are not in time yet.
+              //Do all comment work here for feed
+              if (Array.isArray(user.feedAction[feedIndex].comments) && user.feedAction[feedIndex].comments)
+              {
 
+                console.log("WE HAVE COMMENTS!!!!!");
+                //iterate over all comments in post - add likes, flag, etc
+                for (var i = 0; i < user.feedAction[feedIndex].comments.length; i++) {
+                  //i is now user.feedAction[feedIndex].comments index
+
+                    //is this action of new user made comment we have to add???
+                    if (user.feedAction[feedIndex].comments[i].new_comment)
+                    {
+
+                      console.log("Adding a new Comment by the USER");
+                      var cat = new Object();
+                      cat.body = user.feedAction[feedIndex].comments[i].comment_body;
+                      cat.new_comment = user.feedAction[feedIndex].comments[i].new_comment;
+                      cat.time = user.feedAction[feedIndex].comments[i].time;
+                      cat.commentID = user.feedAction[feedIndex].comments[i].new_comment_id;
+                      cat.likes = 0;
+
+                      script_feed[0].comments.push(cat);
+                      console.log("Already have COMMENT ARRAY");
+
+
+                    }
+
+                    else
+                    {
+                      //Do something
+
+                      var commentIndex = _.findIndex(script_feed[0].comments, function(o) { return o.id == user.feedAction[feedIndex].comments[i].comment; });
+
+                      //If user action on Comment in Script Post
+                      if(commentIndex!=-1)
+                      {
+
+                        //console.log("WE HAVE AN ACTIONS ON COMMENTS!!!!!");
+                        //Action is a like (user liked this comment in this post)
+                        if (user.feedAction[feedIndex].comments[i].liked)
+                        {
+                          script_feed[0].comments[commentIndex].liked = true;
+                          script_feed[0].comments[commentIndex].likes++;
+                          //console.log("Post %o has been LIKED", script_feed[0].id);
+                        }
+
+                        //Action is a FLAG (user Flaged this comment in this post)
+                        if (user.feedAction[feedIndex].comments[i].flagged)
+                        {
+                          console.log("Comment %o has been LIKED", user.feedAction[feedIndex].comments[i].id);
+                          script_feed[0].comments.splice(commentIndex,1);
+                        }
+                      }
+                    }//end of ELSE
+
+                }//end of for loop
+
+              }//end of IF Comments
               if (user.feedAction[feedIndex].readTime[0])
               {
                 script_feed[0].read = true;
@@ -194,6 +247,7 @@ exports.getScriptPost = (req, res) => {
 /*
 ##############
 NEW POST
+Add a new post to the DB from the user
 #############
 */
 exports.newPost = (req, res) => {
@@ -201,10 +255,6 @@ exports.newPost = (req, res) => {
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
 
-    //var lastFive = user.id.substr(user.id.length - 5);
-   // console.log(lastFive +" just called to create a new post");
-    //console.log("OG file name is "+req.file.originalname);
-    //console.log("Actual file name is "+req.file.filename);
     console.log("Text Body of Post is "+req.body.body);
 
     var post = new Object();
@@ -235,7 +285,6 @@ exports.newPost = (req, res) => {
     if (req.file)
     {
       post.picture = req.file.filename;
-
       user.numPosts = user.numPosts + 1;
       post.postID = user.numPosts;
       post.type = "user_post";
@@ -291,7 +340,6 @@ exports.newPost = (req, res) => {
             if (err) {
               return next(err);
             }
-            //req.flash('success', { msg: 'Profile information has been updated.' });
             res.redirect('/');
           });
 
@@ -332,6 +380,8 @@ exports.newPost = (req, res) => {
 /**
  * POST /feed/
  * Update user's feed posts Actions.
+ All likes, flags, new comments (with actions on those comments as well)
+ get added here
  */
 exports.postUpdateFeedAction = (req, res, next) => {
 
@@ -339,7 +389,7 @@ exports.postUpdateFeedAction = (req, res, next) => {
     //somehow user does not exist here
     if (err) { return next(err); }
 
-    console.log("@@@@@@@@@@@ TOP postID is  ", req.body.postID);
+    console.log("@@@@@@@@@@@ TOP postID is  ", req.body.post_id);
 
     //find the object from the right post in feed
     var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == req.body.postID; });
@@ -365,7 +415,7 @@ exports.postUpdateFeedAction = (req, res, next) => {
     else
     {
       //we found the right post, and feedIndex is the right index for it
-      console.log("##### FOUND post "+req.body.postID+" at index "+ feedIndex);
+      console.log("##### FOUND post "+req.body.post_id+" at index "+ feedIndex);
 
       //update to new StartTime
       if (req.body.start && (req.body.start > user.feedAction[feedIndex].startTime))

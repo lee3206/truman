@@ -7,12 +7,6 @@ const _ = require('lodash');
 /**
  * GET /
  * List of Actors.
-
-exports.index = (req, res) => {
-  res.render('home', {
-    title: 'Home'
-  });
-};
 */
 
 exports.getActors = (req, res) => {
@@ -41,13 +35,13 @@ exports.getActor = (req, res, next) => {
     if (err) { console.log(err); return next(err); }
 
 
-    ////this is not solving the problem FUCKKKKK@
-   if (act == null) {console.log("NULLLLLLLLLLL");  var myerr = new Error('Record not found!'); return next(myerr); }
+    if (act == null) {console.log("NULLLLLLLLLLL");  var myerr = new Error('Record not found!'); return next(myerr); }
 
-    //console.log(act);
-    //console.log("&&&&&&&&&&&&&&&&&&&&&");
+    console.log(act);
+    console.log("&&&&&&&&&&&&&&&&&&&&&");
 
     user.logPage(Date.now(), req.params.userId);
+    console.log("We found an actor!")
 
     var isBlocked;
 
@@ -65,7 +59,7 @@ exports.getActor = (req, res, next) => {
     .sort('-time')
     .populate('actor')
     .populate({
-     path: 'reply',
+     path: 'comments.actor',
      populate: {
        path: 'actor',
        model: 'Actor'
@@ -78,7 +72,7 @@ exports.getActor = (req, res, next) => {
       for (var i = script_feed.length - 1; i >= 0; i--) {
 
         var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == script_feed[i].id; });
-
+        console.log('Feed index is: ' +feedindex);
 
           if(feedIndex!=-1)
           {
@@ -122,7 +116,7 @@ exports.getActor = (req, res, next) => {
           return next(err);
         }
       });
-      console.log("Is block is now "+isBlocked);
+      console.log("Is the actor blocked?: "+isBlocked);
       res.render('actor', { script: script_feed, actor: act, blocked:isBlocked });
     });
 
