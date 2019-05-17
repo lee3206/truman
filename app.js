@@ -83,7 +83,7 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 //mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
-mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI);
+mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI) {useNewUrlParser: true};
 mongoose.connection.on('error', (err) => {
   console.error(err);
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
@@ -98,29 +98,29 @@ mongoose.connection.on('error', (err) => {
 var rule = new schedule.RecurrenceRule();
 rule.hour = 4;
 rule.minute = 55;
- 
+
 var j = schedule.scheduleJob(rule, function(){
   console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
   console.log('@@@@@@######@@@@@@@@Sending Mail to All USER!!!!!');
   console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
   userController.mailAllActiveUsers();
-}); 
+});
 
 
 /****
-**CRON JOBS 
+**CRON JOBS
 **Check if users are still active
 */
 var rule = new schedule.RecurrenceRule();
 rule.hour = 4;
 rule.minute = 30;
- 
+
 var j = schedule.scheduleJob(rule, function(){
   console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
   console.log('@@@@@@######@@@@@@@@Checking if Users are active!!!!!');
   console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
   userController.stillActive();
-}); 
+});
 
 
 /**
