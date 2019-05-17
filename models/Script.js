@@ -17,7 +17,8 @@ const scriptSchema = new mongoose.Schema({
   actor: {type: Schema.ObjectId, ref: 'Actor'},
 
   reply: {type: Schema.ObjectId, ref: 'Script'},
-  time: Number //in millisecons
+  //time: Number //in millisecons
+  time: String //to convert into milliseconds, use hh:mm
 });
 
 

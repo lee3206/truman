@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const actorSchema = new mongoose.Schema({
   class: String, //normal, bully, victim, highread,cohort
   username: String,
+  id: Number,
   profile: {
     name: String,
     gender: String,

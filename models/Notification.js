@@ -12,10 +12,10 @@ const notificationSchema = new mongoose.Schema({
   userReply: Number, //for replys from User
   actorReply: Number, //Ref for an Action on a Actor reply (like reads, likes, etc)
   actor: {type: Schema.ObjectId, ref: 'Actor'}, //actor who did the action (read,likes, replied)
-  time: Number, //in millisecons
+  time: String, //in hh:mm format, convereted to milliseconds
   replyBody: {type: String, default: '', trim: true},//body of actor's reply
   //reply: {type: Schema.ObjectId, ref: 'Script'} //this will need to be something else (like the actual user post I guess?)
-  
+
 }, { timestamps: true });
 
 

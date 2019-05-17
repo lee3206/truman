@@ -3,5 +3,14 @@
     "actorReply":2,
     "actor":{"$oid":"5978ffc618bf097f8cf39ad6"},
     "notificationType":"read",
-    "time":4140000}
+    "time":"00:09"
+  },
+  {
+    "userPost":0,
+    "actor":{"$oid":"5978ffc618bf097f8cf39ab5"},
+    "notificationType":"reply",
+    "replyBody":"Looking good :)",
+    "time":"00:30"
+  }
+
 ]
