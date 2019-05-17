@@ -1,14 +1,12 @@
-FROM node:10
+FROM node:6.6.0
 
 COPY . /starter
 COPY package.json /starter/package.json
-COPY .env /starter/.env
+COPY .env.example /starter/.env.example
 
 WORKDIR /starter
 
-RUN npm install
-
-RUN npm audit fix
+RUN npm install 
 
 CMD ["npm","start"]
 

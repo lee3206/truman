@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const actorSchema = new mongoose.Schema({
   class: String, //normal, bully, victim, highread,cohort
-  id: String,
   username: String,
   profile: {
     name: String,
@@ -22,7 +21,6 @@ actorSchema
   //var diff = Date.now() - this.time;
   return '/user/' + this.username;
 });
-
 
 const Actor = mongoose.model('Actor', actorSchema);
 
