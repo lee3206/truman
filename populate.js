@@ -133,6 +133,7 @@ function createActorInstances() {
     actordetail.bio = actor1.bio;
     actordetail.age = actor1.age;
     actordetail.class = actor1.class;
+
     actordetail.username = actor1.username;
 
     var actor = new Actor(actordetail);
@@ -207,7 +208,6 @@ Takes a while because of this
 function createPostRepliesInstances(){
 
     async.eachSeries(comment_list, function(new_replies, callback) {
-
       Actor.findOne({ username: new_replies.actor }, (err, act) => {
         if (act){//if correct actor is found
           Script.findOne({post_id: new_replies.reply}, function(err, pr){
