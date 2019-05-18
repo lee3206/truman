@@ -32,16 +32,16 @@ block content
                   .extra.images
                     each actor in best
                       if actor.username != "generic-joe"
-                        a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.profile.name, data-position='top center')
-                          img(src='/profile_pictures/'+actor.profile.picture)
+                        a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.name, data-position='top center')
+                          img(src='/profile_pictures/'+actor.picture)
                   if best.length == 1
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
+                      a(href='/user/'+best[0].username)=best[0].name
                       |   has read your post.
                       .date=val.time
                   else
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
+                      a(href='/user/'+best[0].username)=best[0].name
                       |  and
                       //-a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
                       a(key=val.key)=(best.length+val.actors.length-1)+" others "
@@ -53,10 +53,10 @@ block content
                     each extra in val.actors
                       .item
                         a.ui.tiny.image(href='/user/'+extra.username)
-                          img(src='/avatar-icon.svg', data-original=extra.profile.picture)
+                          img(src='/avatar-icon.svg', data-original=extra.picture)
                         .middle.aligned.content
                           .header
-                            a(href='/user/'+extra.username)=extra.profile.name
+                            a(href='/user/'+extra.username)=extra.name
             when 'like'
              - var best = val.actors.splice(0, 5);
               .event
@@ -66,16 +66,16 @@ block content
                   img.ui.tiny.right.floated.image(src='/user_post/'+val.picture)
                   .extra.images
                     each actor in best
-                      a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.profile.name, data-position='top center')
-                        img(src='/profile_pictures/'+actor.profile.picture)
+                      a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.name, data-position='top center')
+                        img(src='/profile_pictures/'+actor.picture)
                   if best.length == 1
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
+                      a(href='/user/'+best[0].username)=best[0].name
                       |   has liked your post.
                       .date=val.time
                   else
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
+                      a(href='/user/'+best[0].username)=best[0].name
                       |  and
                       a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
                       | have liked your post.
@@ -91,20 +91,20 @@ block content
                   .extra.images
                     each actor in best
                       if actor.username != "generic-joe"
-                        a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.profile.name, data-position='top center')
-                          img(src='/profile_pictures/'+actor.profile.picture)
+                        a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.name, data-position='top center')
+                          img(src='/profile_pictures/'+actor.picture)
                   if best.length == 1
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
-                      | has read your reply to #{val.originalActor.profile.name}'s post.
+                      a(href='/user/'+best[0].username)=best[0].name
+                      | has read your reply to #{val.originalActor.name}'s post.
                       .date=val.time
                   else
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
+                      a(href='/user/'+best[0].username)=best[0].name
                       |  and
                       //-a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
                       a(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have read your reply to #{val.originalActor.profile.name}'s post.
+                      | have read your reply to #{val.originalActor.name}'s post.
                       .date=val.time
               .ui.small.long.extrausers.modal(id=val.key)
                 .image.centered.content
@@ -112,10 +112,10 @@ block content
                     each extra in val.actors
                       .item
                         a.ui.tiny.image(href='/user/'+extra.username)
-                          img(src='/avatar-icon.svg', data-original=extra.profile.picture)
+                          img(src='/avatar-icon.svg', data-original=extra.picture)
                         .middle.aligned.content
                           .header
-                            a(href='/user/'+extra.username)=extra.profile.name
+                            a(href='/user/'+extra.username)=extra.name
             when 'reply_like'
              - var best = val.actors.splice(0, 5);
               .event
@@ -126,19 +126,19 @@ block content
                     img.ui.tiny.right.floated.image(src='/'+val.picture)
                   .extra.images
                     each actor in best
-                      a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.profile.name, data-position='top center')
-                        img(src='/profile_pictures/'+actor.profile.picture)
+                      a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.name, data-position='top center')
+                        img(src='/profile_pictures/'+actor.picture)
                   if best.length == 1
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
-                      |   has liked your reply to #{val.originalActor.profile.name}'s post.
+                      a(href='/user/'+best[0].username)=best[0].name
+                      |   has liked your reply to #{val.originalActor.name}'s post.
                       .date=val.time
                   else
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
+                      a(href='/user/'+best[0].username)=best[0].name
                       |  and
                       a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have liked your reply to #{val.originalActor.profile.name}'s post.
+                      | have liked your reply to #{val.originalActor.name}'s post.
                       .date=val.time
             when 'actor_reply_read'
               - var best = val.actors.splice(0, 5);
@@ -150,19 +150,19 @@ block content
                   .extra.images
                     each actor in best
                       if actor.username != "generic-joe"
-                        a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.profile.name, data-position='top center')
-                          img(src='/profile_pictures/'+actor.profile.picture)
+                        a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.name, data-position='top center')
+                          img(src='/profile_pictures/'+actor.picture)
                   if best.length == 1
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
-                      | has read #{val.originalActor.profile.name}'s reply to your post.
+                      a(href='/user/'+best[0].username)=best[0].name
+                      | has read #{val.originalActor.name}'s reply to your post.
                       .date=val.time
                   else
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
+                      a(href='/user/'+best[0].username)=best[0].name
                       |  and
                       a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have read #{val.originalActor.profile.name}'s reply to your post.
+                      | have read #{val.originalActor.name}'s reply to your post.
                       .date=val.time
               .ui.small.long.extrausers.modal(id=val.key)
                 .image.centered.content
@@ -170,10 +170,10 @@ block content
                     each extra in val.actors
                       .item
                         a.ui.tiny.image(href='/user/'+extra.username)
-                          img(src='/avatar-icon.svg', data-original=extra.profile.picture)
+                          img(src='/avatar-icon.svg', data-original=extra.picture)
                         .middle.aligned.content
                           .header
-                            a(href='/user/'+extra.username)=extra.profile.name
+                            a(href='/user/'+extra.username)=extra.name
             when 'actor_reply_like'
              - var best = val.actors.splice(0, 5);
               .event
@@ -183,19 +183,19 @@ block content
                   img.ui.tiny.right.floated.image(src='/user_post/'+val.picture)
                   .extra.images
                     each actor in best
-                      a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.profile.name, data-position='top center')
-                        img(src='/profile_pictures/'+actor.profile.picture)
+                      a.ui.avatar.image(href='/user/'+actor.username, data-tooltip=actor.name, data-position='top center')
+                        img(src='/profile_pictures/'+actor.picture)
                   if best.length == 1
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
-                      |   has liked #{val.originalActor.profile.name}'s reply to your post.
+                      a(href='/user/'+best[0].username)=best[0].name
+                      |   has liked #{val.originalActor.name}'s reply to your post.
                       .date=val.time
                   else
                     .summary
-                      a(href='/user/'+best[0].username)=best[0].profile.name
+                      a(href='/user/'+best[0].username)=best[0].name
                       |  and
                       a.others(key=val.key)=(best.length+val.actors.length-1)+" others "
-                      | have liked #{val.originalActor.profile.name}'s reply to your post.
+                      | have liked #{val.originalActor.name}'s reply to your post.
                       .date=val.time
             when 'reply'
               .event
@@ -204,11 +204,11 @@ block content
                 .content
                   img.ui.tiny.right.floated.image(src='/user_post/'+val.picture)
                   .extra.images
-                      a.ui.avatar.image(href='/user/'+val.actor.username, data-tooltip=val.actor.profile.name, data-position='top center')
-                        img(src='/profile_pictures/'+val.actor.profile.picture)
+                      a.ui.avatar.image(href='/user/'+val.actor.username, data-tooltip=val.actor.name, data-position='top center')
+                        img(src='/profile_pictures/'+val.actor.picture)
                   .summary
                     a(href='/user/'+val.actor.username)
-                      span=val.actor.profile.name
+                      span=val.actor.name
                     |  has replied to your post.
                   .extra.text=val.replyBody
 

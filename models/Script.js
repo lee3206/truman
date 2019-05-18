@@ -10,7 +10,7 @@ const scriptSchema = new mongoose.Schema({
   lowread: Number,//numbers for low-read condition
   likes: Number,//number of lieks the post has
   actor: {type: Schema.ObjectId, ref: 'Actor'}, //actor who wrote the post
-  //reply: {type: Schema.ObjectId, ref: 'Script'},
+  reply: {type: Schema.ObjectId, ref: 'Script'},
   time: Number, //in millisecons
 
   //comments for this post (in an array)

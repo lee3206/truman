@@ -91,7 +91,7 @@ function getLikes() {
   return notRandomNumbers[idx];
 }
 
-//create a radom number (for likes) with a weighted distrubution
+//create a random number (for likes) with a weighted distrubution
 //this is for comments
 function getLikesComment() {
     var notRandomNumbers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 3, 4];
@@ -215,7 +215,7 @@ function createPostRepliesInstances(){
               var comment_detail = new Object();
               comment_detail.body = new_replies.body
               comment_detail.commentID = new_replies.id;
-              comment_detail.likes = getLikesComment();
+              comment_detail.likes = getLikes();
               comment_detail.time = timeStringToNum(new_replies.time);
               //1 hr is 3600000
               comment_detail.actor = act;

@@ -1,7 +1,37 @@
 [
   {
+    "userPost":0,
+    "actor":{"$oid":"5978ffc618bf097f8cf39ac7"},
+    "notificationType":"read",
+    "time":120000
+  },
+  
+  {
+    "userPost":0,
+    "actor":{"$oid":"5978ffc618bf097f8cf39ab5"},
+    "notificationType":"reply",
+    "replyBody":"Looking good :)",
+    "time":302110
+  },
+
+  {
+    "userReply":1,
+    "actor":{"$oid":"5978ffc618bf097f8cf39abe"},
+    "notificationType":"like",
+    "time":240000
+  },
+
+  {
+    "userReply":0,
+    "actor":{"$oid":"5978ffc618bf097f8cf39ab9"},
+    "notificationType":"read",
+    "time":1500000
+  },
+
+  {
     "actorReply":2,
     "actor":{"$oid":"5978ffc618bf097f8cf39ad6"},
     "notificationType":"read",
-    "time":414000}
+    "time":414000
+  }
 ]

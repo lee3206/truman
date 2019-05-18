@@ -26,8 +26,7 @@ block content
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     img.ui.centered.small.image(src='/heart.svg')
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')
-    //-.ui.active.dimmer.feed
-      .ui.large.text.loader Loading
+    
     //- Input for creating new post at top of feed
     #newpost.ui.fluid.left.labeled.right.icon.input
       .ui.label
@@ -341,7 +340,7 @@ block content
                         .content
                           a.author(href='/me')=user.profile.name || user.username || user.id
                           .metadata
-                            span.date.sim=(Date.now() + comment.time)
+                            span.date.sim=(user.createdAt.getTime() + comment.time)
                             .rating
                               i.heart.icon
                               span.num=0
@@ -358,7 +357,7 @@ block content
                         .content
                           a.author(href='/user/'+comment.actor.username)=comment.actor.name
                           .metadata
-                            span.date.sim=(Date.now() + comment.time)
+                            span.date.sim=(user.createdAt.getTime() + comment.time)
                             .rating
                               if comment.liked
                                 i.red.heart.icon
