@@ -1,0 +1,123 @@
+Amichai-Hamburger & Vinizky (2010)
+  Extraversion:
+    number of friends
+    negative with amount of posted personal information
+      (Operationalize as longer bio for low extra/shorter for high extra)
+  Openness:
+    amount of posted personal information
+    used more features from personal info section (more expressive)
+      (Operationalize as more emoji in bio)
+  Neuro:
+    More likely to post photos on Facebook profile
+    Low and high share more basic info (more selfies, more bio)
+      Emotionally secure shares more because secure
+      Emotionally insecure looking for self assurance
+  Agree:
+    Interaction of agreeableness and gender
+    U shaped correlation between agree and number of picture
+  Con:
+    related to number of friends
+    Less use of picture upload
+
+Gosling (2011):
+  Extraversion:
+    number of friends,
+    number of friends in local network.
+    maintaining up to date presence
+    tending to social bonds (commenting on other pages)
+
+  Openness:
+    Number of friends,
+    more number of local network friends,
+    more number of networks
+    more photos of new activities
+    more photos of new people
+    more photos of new things
+
+  Conscientiousness:
+    Procrastinators can avoid work
+    low con people spend more time on FB
+
+  Agreeableness:
+    More views on pages (any/others/own) (notifications would be perfect for this)
+
+My Research:
+  Neuro:
+    low Venting/ranting
+    high controlling self-presentation
+  Extraversion:
+    high Talking with intimate group of friends
+    low talking to large unknown audience
+  Agree:
+
+  Con:
+    Post control
+    Creating and controlling photos
+  Open:
+    More open on ephemeral media
+    authentic self presentation
+
+
+Chosen Characters:
+Open:
+  High: ID:22 Fool rambling_traveler / (ID:17 Star star_striker) Just fool for now (day 1)
+    Operationalization: Lots of new photos, activities, people, places, etc.
+    (post goal of like 10 per day)
+    More expressive in bio, more emoji in bio/posts/comments
+
+  Low: ID:5 Hierophant bishop.bobby (1 day)
+    Operationalization: Not new photos, same thing constantly.
+    Not expressive in bio, no emoji in bio/posts/comments
+
+Con:
+  High: ID: 4 Emperor Emperor_B (1 day)
+    Operationalization: Tight control of posts (only specific things), not many photos,
+    not much "time" on SM (so few posts/comments). Tight grammar control
+
+  Low: ID: 10 Wheel of Fortune wheel_in_the_sky (1day)
+    Operationalization: Loose control of posts, pictures of drinking, being sloppy, etc.
+    Much more "time" on SM (lots of posts/comments). Mispellings
+
+Extra:
+  High: ID: 7 Chariot gottagofast (did 4 or so)
+    Operationalization: Lots of friends (high read only, high likes),
+    lots of comments with friends, Short bio.
+    I've added a lot of call outs to people, generic positive post type things
+
+  Low: ID: 9 Hermit hidden_hermit (did one as example)
+    Operationalization: Few friends (very low read, zero likes), no comments, long bio
+
+Agree:
+  High: ID: 6 Lovers love_them_all (1 example)
+    Operationalization: Lots of notifications (not currently working)
+    High post lots of pictures. Content is very kind, warm, loving, supportive
+
+  Low: ID: 15 Devil Devil.in.the.Details (1 example)
+    Operationalization: No notifications, lots of pictures.
+    Low post lots of pictures. Content is cold, aggressive, mean, but not pointless
+
+Neuro:
+  High: ID:14 Temperance total_balance (1 example)
+    Longer bio (because emotionally secure), control over posts, content is always positive
+
+  Low: ID: 18 Moon luna_lover (day 1)
+    Longer bio (because looking for reassurance), no post control, content has venting/ranting
+    Also some vague-booking
+
+Persona approach from HCI. Think about narrative framing and challenges of generating a Character
+that expresses particular properties. Not necessarily like narrative, but speaking to concerns about writing.
+By subtle behavioral cues, trying to signal aspects of a person.
+Talk about what I tried to do,
+Framing critique will be difficult. Explain some stuff in the setup.
+Give them a clue, "imagine you are trapped in SM with these people, I've given them SM behaviors, try and
+see if you can match people to each of these descriptions"
+
+Lit on social media and autism (training tool for people with autism)
+
+Is there lit on making personality persona?
+
+FOR TEXT POSTS DON"T USE blank.jpg. USE AN IMAGE WITH TEXT A LA FACEBOOK/INSTA
+
+GAAAANNNNSSSS generate the same person but different races, see how people interact!!!!
+
+RtD crafting through personas, crafting how people look at dimensions of people in SM space

@@ -71,7 +71,7 @@ Where are all the actors!?
 
 Well, you need to place them into the database. Currently, nothing is in there.
 
-To fix this, go into docker. I'm sure there is another way to do this, but here is how i do it.
+To fix this, go into docker. I'm sure there is another way to do this, but here is how I do it.
 
 First, download the Kitematic Docker visualizer. Then, click the EXEC button to create a CMD within the docker!
 
@@ -94,4 +94,5 @@ Ok, you've got a version of Truman running, but it's not exactly what you want. 
 
 (I mean, you can. I'm just some text.)
 
-TODO:
+TODO: Let actors have their posts stay on their profile
+Change eat snap love branding (intro picture, menu bar, ToS, directions)

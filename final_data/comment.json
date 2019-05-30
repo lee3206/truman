@@ -1,51 +1,649 @@
 [
   {
-    "id": 4,
-    "body": "Lol it's true!! I don't want to see him at school anymore",
-    "actor": "SnakeCharmer",
-    "reply": 0,
-    "time": "-0:24"
-  },
-  {
-    "id": 6,
-    "body": "ewwwwwwww",
-    "actor": "coachmatthews",
-    "reply": 0,
-    "time": "-0:09"
-  },
-  {
-    "id": 7,
-    "body": "I feel you bro. He's the worst deskmate",
-    "actor": "bblueberryy",
-    "reply": 0,
-    "time": "0:05"
-  },
-  {
-    "id": 15,
-    "body": "No one wants to hang out with you :P",
-    "actor": "ancho-n-cayenne",
+    "id": 1,
+    "body": "Nice!!",
+    "actor": "Strong_Man",
     "reply": 0,
     "time": "-0:21"
   },
   {
-    "id": 16,
-    "body": "Yeah^^ why don't you just go by yourself xD",
-    "actor": "john73",
+    "id": 2,
+    "body": "^^ looksss gooood",
+    "actor": "wheel_in_the_sky",
     "reply": 0,
     "time": "-0:15"
   },
   {
-    "id": 19,
+    "id": 3,
     "body": "cool pic",
-    "actor": "livelaughlove",
+    "actor": "hanginaround",
     "reply": 0,
     "time": "-1:43"
   },
   {
-    "id": 20,
+    "id": 4,
     "body": "jealous!!!!!",
-    "actor": "SnakeCharmer",
+    "actor": "luna_lover",
     "reply": 0,
     "time": "-1:44"
+  },
+  {
+    "id": 5,
+    "body": "ugh you have such a nice life",
+    "actor": "luna_lover",
+    "reply": 1,
+    "time": "-0:32"
+  },
+  {
+    "id": 6,
+    "body": "wish i wasn't chained to my deskkkkk",
+    "actor": "wheel_in_the_sky",
+    "reply": 1,
+    "time": "-0:44"
+  },
+  {
+    "id": 7,
+    "body": "SUCH a positive message! Sending good vibes!!",
+    "actor": "love_them_all",
+    "reply": 1,
+    "time": "-1:44"
+  },
+  {
+    "id": 8,
+    "body": "dammm gurll lookin fresh out there",
+    "actor": "wheel_in_the_sky",
+    "reply": 2,
+    "time": "-1:44"
+  },{
+    "id": 9,
+    "body": "so much greenery!",
+    "actor": "naturequeen",
+    "reply": 2,
+    "time": "-1:20"
+  },
+  {
+    "id": 10,
+    "body": "you go to so many beautiful places!!!!",
+    "actor": "gottagofast",
+    "reply": 2,
+    "time": "-1:10"
+  },
+  {
+    "id": 11,
+    "body": "nice",
+    "actor": "justice.for.all",
+    "reply": 2,
+    "time": "-0:43"
+  },
+  {
+    "id": 12,
+    "body": "so pretty!",
+    "actor": "livelaughlovelady",
+    "reply": 2,
+    "time": "-0:23"
+  },
+  {
+    "id": 13,
+    "body": "Cool water, warm sand, can't wait to hear about your trip ^_^",
+    "actor": "love_them_all",
+    "reply": 3,
+    "time": "-1:43"
+  },
+  {
+    "id": 14,
+    "body": "So pretty out there!",
+    "actor": "hanginaround",
+    "reply": 3,
+    "time": "-1:23"
+  },{
+    "id": 15,
+    "body": "You know, all that tourism really destroys those beaches. Thanks for adding somemore wear and tear",
+    "actor": "Devil.in.the.Details",
+    "reply": 3,
+    "time": "-1:03"
+  },{
+    "id": 16,
+    "body": "Don't be shitty DitD",
+    "actor": "sunflower_gurl",
+    "reply": 3,
+    "time": "-0:43"
+  },
+  {
+    "id": 17,
+    "body": "Lookin good babe",
+    "actor": "all_across_the_universe",
+    "reply": 4,
+    "time": "-1:43"
+  },{
+    "id": 18,
+    "body": "Far out... looks like the horizon is stretching out forever...",
+    "actor": "expanded_mind",
+    "reply": 4,
+    "time": "-1:21"
+  },
+  {
+    "id": 19,
+    "body": "cool!!!!",
+    "actor": "tower.wrecker",
+    "reply": 4,
+    "time": "-1:01"
+  },
+  {
+    "id": 20,
+    "body": "bleh, lotta salt",
+    "actor": "Strong_Man",
+    "reply": 4,
+    "time": "-0:21"
+  },
+  {
+    "id": 21,
+    "body": "sleep tight!!!! gotta keep the energy up for more travel",
+    "actor": "love_them_all",
+    "reply": 5,
+    "time": "-2:01"
+  },
+  {
+    "id": 22,
+    "body": "ugh, im still jelous!!!",
+    "actor": "luna_lover",
+    "reply": 5,
+    "time": "-1:31"
+  },
+  {
+    "id": 23,
+    "body": "bleh, hights makin me dizy",
+    "actor": "wheel_in_the_sky",
+    "reply": 5,
+    "time": "-1:01"
+  },
+  {
+    "id": 24,
+    "body": "rude much",
+    "actor": "livelaughlovelady",
+    "reply": 6,
+    "time": "-2:11"
+  },
+  {
+    "id": 25,
+    "body": "gotta let it slide off of you, stress isn't worth it",
+    "actor": "death_defying_JC",
+    "reply": 6,
+    "time": "-1:31"
+  },
+  {
+    "id": 26,
+    "body": "I bet it's your own fault",
+    "actor": "Devil.in.the.Details",
+    "reply": 6,
+    "time": "-1:01"
+  },
+  {
+    "id": 27,
+    "body": "Don't listen to negativity, you can get through it",
+    "actor": "love_them_all",
+    "reply": 6,
+    "time": "-0:31"
+  },
+  {
+    "id": 28,
+    "body": "so... tyou wanna talk???? Vague much?!!?!",
+    "actor": "wheel_in_the_sky",
+    "reply": 7,
+    "time": "-1:31"
+  },
+  {
+    "id": 29,
+    "body": "sorry to hear that",
+    "actor": "bishop.bobby",
+    "reply": 7,
+    "time": "-1:01"
+  },
+  {
+    "id": 30,
+    "body": "😥😥😥 hope it turns around for you 😥😥😥",
+    "actor": "rambling_traveler",
+    "reply": 7,
+    "time": "-0:41"
+  },
+  {
+    "id": 31,
+    "body": "Why are you even posting this whiny garbage?",
+    "actor": "Devil.in.the.Details",
+    "reply": 8,
+    "time": "-1:41"
+  },
+  {
+    "id": 32,
+    "body": "hey fuk off, you dont know what you are talkn about. I can post whatever i want",
+    "actor": "luna_lover",
+    "reply": 8,
+    "time": "-1:11"
+  },
+  {
+    "id": 33,
+    "body": "yea leave her aloneeeeee!!!!!!!😤",
+    "actor": "wheel_in_the_sky",
+    "reply": 8,
+    "time": "-0:40"
+  },
+  {
+    "id": 34,
+    "body": "🙄",
+    "actor": "Devil.in.the.Details",
+    "reply": 9,
+    "time": "-0:35"
+  },
+  {
+    "id": 35,
+    "body": "Just gotta keep moving on!",
+    "actor": "star_striker",
+    "reply": 9,
+    "time": "-1:35"
+  },
+  {
+    "id": 36,
+    "body": "YOU ARE TOooGOOD for himmmmmm!!!!!!!",
+    "actor": "wheel_in_the_sky",
+    "reply": 9,
+    "time": "-1:15"
+  },
+  {
+    "id": 37,
+    "body": "That's a nice park!",
+    "actor": "sunflower_gurl",
+    "reply": 10,
+    "time": "-1:15"
+  },
+  {
+    "id": 38,
+    "body": "You are the most boring human on this planet! You post about the same park every day!!!",
+    "actor": "Devil.in.the.Details",
+    "reply": 10,
+    "time": "-0:55"
+  },
+  {
+    "id": 39,
+    "body": "honey, you do your thing, don't listen to this to that guy",
+    "actor": "all_across_the_universe",
+    "reply": 10,
+    "time": "-0:23"
+  },
+  {
+    "id": 40,
+    "body": "Seriously?!",
+    "actor": "Devil.in.the.Details",
+    "reply": 11,
+    "time": "-1:23"
+  },
+  {
+    "id": 41,
+    "body": "Nice photo man",
+    "actor": "justice.for.all",
+    "reply": 11,
+    "time": "-0:53"
+  },
+  {
+    "id": 42,
+    "body": "😜you should explore some new places gp and see the world 👽",
+    "actor": "rambling_traveler",
+    "reply": 11,
+    "time": "-0:37"
+  },
+  {
+    "id": 43,
+    "body": "thats.. kinda borring dooood",
+    "actor": "wheel_in_the_sky",
+    "reply": 12,
+    "time": "-2:37"
+  },
+  {
+    "id": 44,
+    "body": "That's what I was saying!",
+    "actor": "Devil.in.the.Details",
+    "reply": 12,
+    "time": "-0:37"
+  },
+  {
+    "id": 45,
+    "body": "Whoa, deja vu...",
+    "actor": "expanded_mind",
+    "reply": 12,
+    "time": "-0:37"
+  },
+  {
+    "id": 46,
+    "body": "Glad to hear it!",
+    "actor": "sunflower_gurl",
+    "reply": 13,
+    "time": "-1:37"
+  },
+  {
+    "id": 47,
+    "body": "sounds like a great group... wish my boss was cool",
+    "actor": "luna_lover",
+    "reply": 13,
+    "time": "-0:37"
+  },
+  {
+    "id": 48,
+    "body": "glad to hear it!",
+    "actor": "gottagofast",
+    "reply": 13,
+    "time": "-0:07"
+  },
+  {
+    "id": 49,
+    "body": "Cool!",
+    "actor": "livelaughlovelady",
+    "reply": 13,
+    "time": "-0:07"
+  },
+  {
+    "id": 50,
+    "body": "Congrats!",
+    "actor": "Strong_Man",
+    "reply": 14,
+    "time": "-2:07"
+  },
+  {
+    "id": 51,
+    "body": "hey good for you guys!!!!",
+    "actor": "wheel_in_the_sky",
+    "reply": 14,
+    "time": "-1:07"
+  },
+  {
+    "id": 52,
+    "body": "👏👏👏 congrats!!",
+    "actor": "rambling_traveler",
+    "reply": 14,
+    "time": "-0:07"
+  },
+  {
+    "id": 53,
+    "body": "ikr",
+    "actor": "luna_lover",
+    "reply": 15,
+    "time": "-1:07"
+  },
+  {
+    "id": 54,
+    "body": "keep pushing through",
+    "actor": "tower.wrecker",
+    "reply": 15,
+    "time": "-0:47"
+  },
+  {
+    "id": 55,
+    "body": "Isn't it odd that we spend so much time at work?",
+    "actor": "expanded_mind",
+    "reply": 15,
+    "time": "-0:27"
+  },
+  {
+    "id": 56,
+    "body": "I'm on here all the time too...",
+    "actor": "Strong_Man",
+    "reply": 16,
+    "time": "-1:27"
+  },
+  {
+    "id": 57,
+    "body": "You are making good money! ",
+    "actor": "gottagofast",
+    "reply": 16,
+    "time": "-1:07"
+  },
+  {
+    "id": 58,
+    "body": "wish I could surf social media at my job......",
+    "actor": "luna_lover",
+    "reply": 16,
+    "time": "-0:43"
+  },
+  {
+    "id": 59,
+    "body": "You go girl! Make sure to stay safe and have a great time!!!",
+    "actor": "love_them_all",
+    "reply": 17,
+    "time": "-0:43"
+  },
+  {
+    "id": 60,
+    "body": "Ugh... wish my friends wanted to party...",
+    "actor": "luna_lover",
+    "reply": 17,
+    "time": "-0:23"
+  },
+  {
+    "id": 61,
+    "body": "YOU SHOULD COME OUT WITH MEEEEEE, PARTY Ins pirit gurlllll",
+    "actor": "wheel_in_the_sky",
+    "reply": 17,
+    "time": "-0:13"
+  },
+  {
+    "id": 62,
+    "body": "oh, no I'm ok... its been a rough day for me",
+    "actor": "luna_lover",
+    "reply": 17,
+    "time": "-0:05"
+  },
+  {
+    "id": 63,
+    "body": "dont worry about me, have fun",
+    "actor": "luna_lover",
+    "reply": 17,
+    "time": "-0:02"
+  },
+  {
+    "id": 64,
+    "body": "gorgeous girls 😍 ",
+    "actor": "Strong_Man",
+    "reply": 18,
+    "time": "-1:32"
+  },
+  {
+    "id": 65,
+    "body": "you all looking good!! 😘😘😘",
+    "actor": "tower.wrecker",
+    "reply": 18,
+    "time": "-1:02"
+  },
+  {
+    "id": 66,
+    "body": "gross, stop hitting on people through SM",
+    "actor": "sunflower_gurl",
+    "reply": 18,
+    "time": "-0:43"
+  },
+  {
+    "id": 67,
+    "body": "if youre in SF com partyyyyyyy!!!!",
+    "actor": "wheel_in_the_sky",
+    "reply": 18,
+    "time": "-0:23"
+  },
+  {
+    "id": 68,
+    "body": "amazing look so good ❤️❤️",
+    "actor": "justice.for.all",
+    "reply": 19,
+    "time": "-1:23"
+  },
+  {
+    "id": 69,
+    "body": "shake it ladies!!!!",
+    "actor": "hanginaround",
+    "reply": 19,
+    "time": "-1:03"
+  },
+  {
+    "id": 70,
+    "body": "all yall hitting on them, just stop god",
+    "actor": "livelaughlovelady",
+    "reply": 19,
+    "time": "-0:53"
+  },
+  {
+    "id": 71,
+    "body": "☠️careful with all that smoke",
+    "actor": "death_defying_JC",
+    "reply": 20,
+    "time": "-1:53"
+  },
+  {
+    "id": 72,
+    "body": "Looking good 😎 ladies",
+    "actor": "MagicMo",
+    "reply": 20,
+    "time": "-1:23"
+  },
+  {
+    "id": 73,
+    "body": "ugh too smokey in there 😷",
+    "actor": "naturequeen",
+    "reply": 20,
+    "time": "-1:07"
+  },
+  {
+    "id": 74,
+    "body": "I like my neighborhood bar better",
+    "actor": "bishop.bobby",
+    "reply": 20,
+    "time": "-0:37"
+  },
+  {
+    "id": 75,
+    "body": "You got this! I usually study on my couch",
+    "actor": "bishop.bobby",
+    "reply": 21,
+    "time": "-1:37"
+  },
+  {
+    "id": 76,
+    "body": "Outside on the grass 🤩🤩🤩🤩",
+    "actor": "rambling_traveler",
+    "reply": 21,
+    "time": "-1:27"
+  },
+  {
+    "id": 77,
+    "body": "Reading a book in a tree",
+    "actor": "naturequeen",
+    "reply": 21,
+    "time": "-1:17"
+  },
+  {
+    "id": 78,
+    "body": "I used to study with my hubby 😌",
+    "actor": "livelaughlovelady",
+    "reply": 21,
+    "time": "-1:07"
+  },
+  {
+    "id": 79,
+    "body": "cramming the night befor a test 😵",
+    "actor": "wheel_in_the_sky",
+    "reply": 21,
+    "time": "-1:01"
+  },
+  {
+    "id": 80,
+    "body": "I'd usually study on my bed",
+    "actor": "MagicMo",
+    "reply": 21,
+    "time": "-0:53"
+  },
+  {
+    "id": 81,
+    "body": "I would always plan out my study schedule, made school very easy",
+    "actor": "Emperor_B",
+    "reply": 21,
+    "time": "-0:43"
+  },
+  {
+    "id": 82,
+    "body": "I used to bake cookies and hand them out!!!",
+    "actor": "love_them_all",
+    "reply": 21,
+    "time": "-0:33"
+  },
+  {
+    "id": 83,
+    "body": "Almonds, it's brain food",
+    "actor": "hanginaround",
+    "reply": 22,
+    "time": "-1:33"
+  },
+  {
+    "id": 84,
+    "body": "donuts jelly or otherwise",
+    "actor": "death_defying_JC",
+    "reply": 22,
+    "time": "-1:23"
+  },
+  {
+    "id": 85,
+    "body": "home-made sandwich!",
+    "actor": "total_balance",
+    "reply": 22,
+    "time": "-1:12"
+  },
+  {
+    "id": 86,
+    "body": "Indian food",
+    "actor": "Devil.in.the.Details",
+    "reply": 22,
+    "time": "-1:06"
+  },
+  {
+    "id": 87,
+    "body": "mom's home cooking",
+    "actor": "sunflower_gurl",
+    "reply": 22,
+    "time": "-0:48"
+  },
+  {
+    "id": 88,
+    "body": "Gotta be pork buns",
+    "actor": "all_across_the_universe",
+    "reply": 22,
+    "time": "-0:18"
+  },
+  {
+    "id": 89,
+    "body": "Get off social media then! 🙄",
+    "actor": "Devil.in.the.Details",
+    "reply": 23,
+    "time": "-1:19"
+  },
+  {
+    "id": 90,
+    "body": "You got this!",
+    "actor": "Strong_Man",
+    "reply": 23,
+    "time": "-1:09"
+  },
+  {
+    "id": 91,
+    "body": "get em donnneee",
+    "actor": "wheel_in_the_sky",
+    "reply": 23,
+    "time": "-0:57"
+  },
+  {
+    "id": 92,
+    "body": "I beleive in you!!!",
+    "actor": "love_them_all",
+    "reply": 23,
+    "time": "-0:43"
+  },
+  {
+    "id": 93,
+    "body": "I beleive in you!!!",
+    "actor": "love_them_all",
+    "reply": 23,
+    "time": "-0:43"
   }
 ]
