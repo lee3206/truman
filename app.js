@@ -87,7 +87,7 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 //mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
-mongoose.connect(mongodb+srv:lee3206:FuwnLuhePotk3-@truman-bl9xj.mongodb.net/test?retryWrites=true&w=majority || process.env.PRO_MONGOLAB_URI);
+mongoose.connect("mongodb+srv://lee3206:FuwnLuhePotk3-@truman-bl9xj.mongodb.net/test?retryWrites=true&w=majority" || process.env.PRO_MONGOLAB_URI);
 mongoose.connection.on('error', (err) => {
   console.error(err);
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
