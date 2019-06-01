@@ -4,7 +4,7 @@ block content
 
   .ui.text.container
     br
-    h1 Welcome to EatSnap.Love!
+    h1 Welcome to Masks!
         h3 Here's what you can do on the site.
     ul
         li Create new posts! Upload existing photos or take new photos with your phone.
@@ -13,17 +13,33 @@ block content
         li Fill out your profile. You can add as much or as little info as you want.
     img.ui.centered.image(src='/esl-howto.png')
     br
-    h3 See who else is around.
-    p We'll notify you if someone replies to or likes your post.
-    if user.ui == 'ui' && user.notify != 'no'
-        p We'll also keep track of which posts you've viewed. To keep things social, we'll let others know when you view their posts, and notify you when they view yours.
-        img.ui.centered.image(src='/UI-read.png')
-    else if user.ui == 'ui'
-        p We'll also keep track of which posts you've viewed.
-        img.ui.centered.image(src='/ui-no-read.png')
-    else if user.notify != 'no'
-        p We'll also keep track of who has viewed your posts.
-        img.ui.centered.image(src='/no-ui-read.png')
+    h1 What you need to do here.
+      h3 You are here for a reason.
+      h3 You need to investigate what mask a user is wearing.
+      p There are ten users wearing ten masks. 
+        p Social Mask: The user wearing this mask is social. Many people talk to them, and they talk to others in return.
+        br
+        p Lonely Mask: The user wearing this mask is isolated. They don't post often, and others don't interact with them.
+        br
+        p Helpful Mask: The user wearing this mask is kind. They are frequently trying to uplift other users.
+        br
+        p Hurtful Mask: The user wearing this mask is wicked. They are frequently trying to tear other users down.
+        br
+        p Ordered Mask: The user wearing this mask is organized. They only post about specific topics, and spend most of their time away from Masks.
+        br
+        p Chaotic Mask: The user wearing this mask is messy. They post about whatever, whenever.
+        br
+        p Opened Mask: The user wearing this mask is novel. They are open to trying new things.
+        br
+        p Closed Mask: The user wearing this mask is mundane. They often do the same thing.
+        br
+        p Tense Mask: The user wearing this mask is unbalanced. They often swing between emotions.
+        br
+        p Relaxed Mask: The user wearing this mask is level. They are generally calm in posts.
+        
+      h3 After 24 hours, each of these users will make a final post. Reply to them and identify their mask. Write in how you identified them.
+      h3 Look at their posts. Look at their comments. Look at their bios. 
+      h1 You must identify them.
     br
     .ui.big.green.labeled.icon.button.info
         i.rocket.icon

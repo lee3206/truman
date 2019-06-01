@@ -1,11 +1,11 @@
 {
- "name": "EastSnap.Love",
- "short_name": "EatSnapLove",
+ "name": "Masks",
+ "short_name": "Masks",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "orientation": "portrait",
-  "description": "Share your favorite food snaps!",
+  "description": "What lies beneath the mask?",
   "theme_color": "#F5F8FA",
  "icons": [
   {

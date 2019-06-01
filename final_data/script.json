@@ -263,7 +263,7 @@
 	"likes": 2,
 	"lowread": 1,
 	"highread": 20,
-	"time": "-5:55"
+	"time": "-1:55"
 },
 {
 	"body": "daily reminder to keep thinking positive and stay safe!!!! Hug someone you care about!!!!",
@@ -276,23 +276,183 @@
 	"time": "-2:55"
 },
 {
-	"body": "Ugh, been working with some new people. So happy to be helping you with your stupid questions that you should already know /s",
+	"body": "hope this is a blessing to ALL of you out there!!!",
 	"post_id": 28,
+	"actor": "love_them_all",
+	"picture": "IMG_1Lo2.jpg",
+	"likes": 5,
+	"lowread": 8,
+	"highread": 20,
+	"time": "3:32"
+},
+{
+	"body": "Happy cat!!! Check out this SUPER happy cat",
+	"post_id": 29,
+	"actor": "love_them_all",
+	"picture": "IMG_1Lo3.gif",
+	"likes": 9,
+	"lowread": 8,
+	"highread": 20,
+	"time": "9:32"
+},
+{
+	"body": "Ugh, been working with some new people. So happy to be helping you with your stupid questions that you should already know /s",
+	"post_id": 30,
 	"actor": "Devil.in.the.Details",
 	"picture": "IMG_1D1.jpg",
 	"likes": 5,
 	"lowread": 8,
 	"highread": 20,
-	"time": "-6:66"
+	"time": "-6:56"
+},
+{
+	"body": "Every day of my life...",
+	"post_id": 31,
+	"actor": "Devil.in.the.Details",
+	"picture": "IMG_1D2.jpg",
+	"likes": 5,
+	"lowread": 8,
+	"highread": 20,
+	"time": "2:56"
+},
+{
+	"body": "To everyone on here...",
+	"post_id": 32,
+	"actor": "Devil.in.the.Details",
+	"picture": "IMG_1D3.jpg",
+	"likes": 5,
+	"lowread": 8,
+	"highread": 20,
+	"time": "6:56"
 },
 {
 	"body": "Doing good, feeling fine ☺️",
-	"post_id": 29,
+	"post_id": 33,
 	"actor": "total_balance",
 	"picture": "IMG_1T1.jpg",
 	"likes": 5,
 	"lowread": 10,
 	"highread": 20,
-	"time": "-8:66"
+	"time": "-1:21"
+},
+{
+	"body": "If you are feeling out of sorts, a little meditation always helps me!",
+	"post_id": 34,
+	"actor": "total_balance",
+	"picture": "IMG_1T2.jpg",
+	"likes": 5,
+	"lowread": 10,
+	"highread": 20,
+	"time": "2:34"
+},
+{
+	"body": "Did you all see this about the earthquake? Remember, it's important to stay calm.",
+	"post_id": 35,
+	"actor": "total_balance",
+	"picture": "IMG_1T3.jpg",
+	"likes": 5,
+	"lowread": 10,
+	"highread": 20,
+	"time": "8:36"
+},
+{
+	"body": "Who am I?",
+	"post_id": 36,
+	"actor": "total_balance",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 37,
+	"actor": "luna_lover",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 38,
+	"actor": "Devil.in.the.Details",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 39,
+	"actor": "love_them_all",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 40,
+	"actor": "hidden_hermit",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 41,
+	"actor": "gottagofast",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 42,
+	"actor": "wheel_in_the_sky",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 43,
+	"actor": "Emperor_B",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 44,
+	"actor": "bishop.bobby",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
+},
+{
+	"body": "Who am I?",
+	"post_id": 45,
+	"actor": "rambling_traveler",
+	"picture": "IMG_end.jpg",
+	"likes": 0,
+	"lowread": 0,
+	"highread": 0,
+	"time": "24:00"
 }
 ]
