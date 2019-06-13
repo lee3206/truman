@@ -19,6 +19,7 @@ const scriptSchema = new mongoose.Schema({
     module: String, //name of mod for this script
     actor: {type: Schema.ObjectId, ref: 'Actor'},
     body: {type: String, default: '', trim: true}, //body of post or reply
+    picture: String,//filename for image in comment?
     commentID: Number, //ID of the comment
     time: Number,//millisecons
     new_comment: {type: Boolean, default: false}, //is new comment

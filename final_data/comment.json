@@ -98,12 +98,13 @@
   },{
     "id": 15,
     "body": "You know, all that tourism really destroys those beaches. Thanks for adding somemore wear and tear",
+    "picture": "IMG_1D2.jpg",
     "actor": "Devil.in.the.Details",
     "reply": 3,
     "time": "-1:03"
   },{
     "id": 16,
-    "body": "Don't be shitty DitD",
+    "body": "Don't be shitty Max",
     "actor": "sunflower_gurl",
     "reply": 3,
     "time": "-0:43"
@@ -228,10 +229,17 @@
   },
   {
     "id": 34,
-    "body": "🙄",
+    "body": "[BLOCKED]",
     "actor": "Devil.in.the.Details",
     "reply": 9,
     "time": "-0:35"
+  },
+  {
+    "id": 34,
+    "body": "Hah, asshole",
+    "actor": "luna_lover",
+    "reply": 9,
+    "time": "-0:23"
   },
   {
     "id": 35,
@@ -515,7 +523,7 @@
   },
   {
     "id": 75,
-    "body": "You got this! I usually study on my couch",
+    "body": "You got this! I always study on my couch",
     "actor": "bishop.bobby",
     "reply": 21,
     "time": "-1:37"
@@ -557,8 +565,8 @@
   },
   {
     "id": 81,
-    "body": "I would always plan out my study schedule, made school very easy",
-    "actor": "Emperor_B",
+    "body": "I would always plan out my study schedule, Made school very easy",
+    "actor": "Emperor_M",
     "reply": 21,
     "time": "-0:43"
   },
@@ -634,13 +642,6 @@
   },
   {
     "id": 92,
-    "body": "I beleive in you!!!",
-    "actor": "love_them_all",
-    "reply": 23,
-    "time": "-0:43"
-  },
-  {
-    "id": 93,
     "body": "I beleive in you!!!",
     "actor": "love_them_all",
     "reply": 23,
@@ -738,15 +739,8 @@
     "time": "-0:24"
   },
   {
-    "id": 107,
-    "body": "All of you WONDERFUL people!!!",
-    "actor": "love_them_all",
-    "reply": 25,
-    "time": "-0:24"
-  },
-  {
     "id": 108,
-    "body": "hello yourself!",
+    "body": "'Hello' is a good place to start!",
     "actor": "all_across_the_universe",
     "reply": 26,
     "time": "-0:24"
@@ -781,7 +775,7 @@
   },
   {
     "id": 113,
-    "body": "Aw, thanks everyone. Virtual hugs! (Even you devil)",
+    "body": "Aw, thanks everyone. Virtual hugs! (Even you Max)",
     "actor": "love_them_all",
     "reply": 27,
     "time": "-0:31"
@@ -844,30 +838,30 @@
   },
   {
     "id": 122,
+    "body": "You, I like you. ",
+    "actor": "Devil.in.the.Details",
+    "reply": 30,
+    "time": "-1:03"
+  },
+  {
+    "id": 123,
     "body": "haha, nice",
     "actor": "tower.wrecker",
     "reply": 31,
     "time": "-2:13"
   },
   {
-    "id": 123,
-    "body": "your kinda mean huh",
-    "actor": "wheel_in_the_sky",
-    "reply": 31,
-    "time": "-1:13"
-  },
-  {
     "id": 124,
-    "body": "your kinda mean huh",
-    "actor": "wheel_in_the_sky",
+    "body": "Right? It's such a hassle dealing with stupid people at work.",
+    "actor": "Devil.in.the.Details",
     "reply": 31,
-    "time": "-1:13"
+    "time": "-1:30"
   },
   {
     "id": 125,
-    "body": "whats bugging you???",
+    "body": "your kinda mean huh",
     "actor": "wheel_in_the_sky",
-    "reply": 32,
+    "reply": 31,
     "time": "-1:13"
   },
   {
@@ -935,7 +929,7 @@
   },
   {
     "id": 135,
-    "body": "Hah, luna you are such a spaz",
+    "body": "Hah, Tiana you are such a spaz",
     "actor": "Devil.in.the.Details",
     "reply": 35,
     "time": "-0:15"
@@ -953,5 +947,103 @@
     "actor": "total_balance",
     "reply": 35,
     "time": "-0:05"
+  },
+  {
+    "id": 138,
+    "body": "I got a link to this Masks thing, I am really the only person on here??",
+    "actor": "gottagofast",
+    "reply": 46,
+    "time": "-25:01"
+  },
+  {
+    "id": 139,
+    "body": "Hello, no there are other people logging on. I don't think anyone else has posted yet though",
+    "actor": "Devil.in.the.Details",
+    "reply": 46,
+    "time": "-24:41"
+  },
+  {
+    "id": 140,
+    "body": "yeah, ive just been lurkin",
+    "actor": "wheel_in_the_sky",
+    "reply": 46,
+    "time": "-24:32"
+  },
+  {
+    "id": 141,
+    "body": "Ok. Well we are just supposed to post normally, right?",
+    "actor": "gottagofast",
+    "reply": 46,
+    "time": "-24:22"
+  },
+  {
+    "id": 142,
+    "body": "yeah i think so, its a beta or something??",
+    "actor": "wheel_in_the_sky",
+    "reply": 46,
+    "time": "-24:22"
+  },
+  {
+    "id": 143,
+    "body": "HELLO! I JUST made a profile and I'm happy to see other people have started posting!!!",
+    "actor": "love_them_all",
+    "reply": 46,
+    "time": "-24:12"
+  },
+  {
+    "id": 144,
+    "body": "Jeez thats a lot of excitement...",
+    "actor": "Devil.in.the.Details",
+    "reply": 46,
+    "time": "-24:01"
+  },
+  {
+    "id": 145,
+    "body": "what are you the writing police?!!!",
+    "actor": "wheel_in_the_sky",
+    "reply": 46,
+    "time": "-23:54"
+  },
+  {
+    "id": 146,
+    "body": "🙄",
+    "actor": "Devil.in.the.Details",
+    "reply": 46,
+    "time": "-23:54"
+  },
+  {
+    "id": 147,
+    "body": "ANYWAY, hey all we can just post stuff here right?",
+    "actor": "luna_lover",
+    "reply": 46,
+    "time": "-22:54"
+  },
+  {
+    "id": 148,
+    "body": "Think so! 😁 😁 I've got a bunch of travel photos I wanna post here!",
+    "actor": "rambling_traveler",
+    "reply": 46,
+    "time": "-22:34"
+  },
+  {
+    "id": 149,
+    "body": "Oh, excellent! I logged onto Masks as soon as I got the link, but no one else was here. Didn't want to waste time if no one is on this.",
+    "actor": "Emperor_M",
+    "reply": 46,
+    "time": "-22:24"
+  },
+  {
+    "id": 150,
+    "body": "I guess this is the place for first comments, hello!",
+    "actor": "total_balance",
+    "reply": 46,
+    "time": "-21:44"
+  },
+  {
+    "id": 151,
+    "body": "Must make me last then. I wasn't sure about trying this new thing, but maybe this will be fun. I usually just post on Facebook...",
+    "actor": "bishop.bobby",
+    "reply": 46,
+    "time": "-20:24"
   }
 ]

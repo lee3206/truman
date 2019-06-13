@@ -10,8 +10,9 @@ services:
     build: .
     ports:
      - "3000:3000"
-  #  environment:
-  #   - PRO_MONGODB_URI=mongodb://mongo:27017/truman
+     #Comment out for production
+    #environment:
+    # - PRO_MONGODB_URI=mongodb://mongo:27017/truman
     links:
      - mongo
     depends_on:

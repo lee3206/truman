@@ -67,7 +67,7 @@ block content
                   |
                   a(href='/user/'+val.reply.actor.username)
                     img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.picture)
-                    span=val.reply.actor.username
+                    span=val.reply.actor.name
                 .content
                   if val.reply.picture
                     img.post.ui.left.floated.small.image(src=val.reply.picture)
@@ -98,7 +98,7 @@ block content
               |
               a(href='/user/'+val.actorAuthor.username)
                 img.ui.avatar.image(src='/profile_pictures/'+val.actorAuthor.profile.picture)
-                span=val.actorAuthor.profile.username
+                span=val.actorAuthor.profile.name
             .content
               .description(style="font-size:130%")=val.body
             .extra.content
@@ -199,12 +199,12 @@ block content
                     if user.notify != 'no'
                       h3.ui.icon.header
                         img.ui.avatar.image(src='/profile_pictures/'+val.actor.picture)
-                        span=" "+val.actor.username+" "
+                        span=" "+val.actor.name+" "
                         | has been notified
                         br
                         if val.reply
                           img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.picture)
-                          span=" "+val.reply.actor.username+" "
+                          span=" "+val.reply.actor.name+" "
                           | has been notified
                         br
                     br
@@ -221,12 +221,12 @@ block content
                     if user.notify != 'no'
                       h3.ui.icon.header
                         img.ui.avatar.image(src='/profile_pictures/'+val.actor.picture)
-                        span=" "+val.actor.username+" "
+                        span=" "+val.actor.name+" "
                         | has been notified
                         br
                         if val.reply
                           img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.picture)
-                          span=" "+val.reply.actor.username+" "
+                          span=" "+val.reply.actor.name+" "
                           | has been notified
                         br
                     br
@@ -240,7 +240,7 @@ block content
               a.ui.avatar.image(href='/user/'+val.actor.username)
                 img(src='/profile_pictures/'+val.actor.picture)
               a(href='/user/'+val.actor.username)
-                span=val.actor.username
+                span=val.actor.name
             .content
               .description(style="font-size:130%")=val.body
             .extra.content
@@ -250,7 +250,7 @@ block content
                   |
                   a(href='/user/'+val.reply.actor.username)
                     img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.picture)
-                    span=val.reply.actor.username
+                    span=val.reply.actor.name
                 .content
                   if val.reply.picture
                     img.post.ui.left.floated.small.image(src=val.reply.picture)
@@ -291,7 +291,7 @@ block content
               |
               a(href='/user/'+val.actor.username)
                 img.ui.avatar.image(src='/profile_pictures/'+val.actor.picture)
-                span=val.actor.username
+                span=val.actor.name
             .image
               img.post(src=val.picture)
               //-img(src='/picture.svg', data-src=val.picture)
@@ -345,6 +345,8 @@ block content
                               i.heart.icon
                               span.num=0
                               |  Likes
+                          .image
+                            image.post(src=comments.picture)
                           .text=comment.body
                           .actions
                             a.like.comment Like
@@ -355,7 +357,7 @@ block content
                         a.avatar(href='/user/'+comment.actor.username)
                           img(src='/profile_pictures/'+comment.actor.picture)
                         .content
-                          a.author(href='/user/'+comment.actor.username)=comment.actor.username
+                          a.author(href='/user/'+comment.actor.username)=comment.actor.name
                           .metadata
                             span.date.sim=(user.createdAt.getTime() + comment.time)
                             .rating
@@ -377,7 +379,7 @@ block content
     .ui.fluid.card
       .content
         .description
-        |  End of Posts for the last 24 hours.
+        |  End of Posts.
     br
     br
     br

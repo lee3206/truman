@@ -11,7 +11,7 @@ html
     meta(name="mobile-web-app-capable" content="yes")
     meta(name="msapplication-tap-highlight" content="no")
     meta(name="content-language" content="en_US")
-    title #{title} - eatsnap.love
+    title #{title} - Masks: A Truman Social Media
     link(rel='shortcut icon', href='/favicon.ico')
     link(rel='manifest', href='/manifest.json')
     link(rel='stylesheet', href='/semantic/dist/semantic.min.css')
@@ -89,7 +89,7 @@ html
         form#postform.ui.feed.form(action='/post/new', method='POST', enctype='multipart/form-data')
           input(type='hidden', name='_csrf', value=_csrf)
           .field
-            textarea(rows='2', placeholder='Share your meal', name='body')
+            textarea(rows='2', placeholder='Share a photo!', name='body')
           .field.image-upload
             label(for='picinput')
               .image.content

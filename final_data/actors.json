@@ -1,4 +1,14 @@
 [
+  {
+    "id":0,
+     "username":"[ADMIN]",
+        "name":"???",
+        "gender":"???",
+        "location":"Everywhere",
+        "picture":"",
+        "bio":"",
+        "age":-999
+  },
    {
      "id":1,
       "username":"MagicMo",
@@ -31,8 +41,8 @@
    },
    {
      "id":4,
-      "username":"Emperor_B",
-         "name":"Bao Reynolds",
+      "username":"Emperor_M",
+         "name":"Marvin Reynolds",
          "gender":"Male",
          "location":"Houston, TX",
          "picture":"tarot4.png",

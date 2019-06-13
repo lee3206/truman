@@ -13,6 +13,7 @@ exports.getScript = (req, res, next) => {
   //req.user.createdAt
   var time_now = Date.now();
   var time_diff = time_now - req.user.createdAt;
+  //Can crank this up or remove to remove post limit
   var time_limit = time_diff - 86400000; //one day in milliseconds
 
   var user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -51,7 +52,9 @@ exports.getScript = (req, res, next) => {
     user.logUser(time_now, userAgent, user_ip);
 
     Script.find()
-      .where('time').lte(time_diff).gte(time_limit)
+    //Making edit here to remove 24 hour time limit
+      //.where('time').lte(time_diff).gte(time_limit)
+      .where('time').lte(time_diff)
       .sort('-time')
       .populate('actor')
       .populate({
@@ -71,8 +74,9 @@ exports.getScript = (req, res, next) => {
         var user_posts = [];
 
         //Look up Notifications??? And do this as well?
-
-        user_posts = user.getPostInPeriod(time_limit, time_diff);
+        //User posts based on posts between time limit (24 hours) and time_diff (current time)
+        //user_posts = user.getPostInPeriod(time_limit, time_diff);
+        user_posts = user.getPostInPeriod(time_diff);
 
         console.log("@@@@@@@@@@ User Post is size: "+user_posts.length);
 

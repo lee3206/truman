@@ -59,7 +59,9 @@ exports.getActor = (req, res, next) => {
     .sort('-time')
     .populate('actor')
     .populate({
-     path: 'comments.actor',
+     //path: 'comments.actor',
+     //I think something is broken here for having bios contain all posts
+     path: 'reply',
      populate: {
        path: 'actor',
        model: 'Actor'
