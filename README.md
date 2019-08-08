@@ -23,7 +23,7 @@ To start with, you should download the following programs
 
 4: ???
 
-Now, go into the Truman directory and make a file called .env (if you are using windows, you cannot do this from windows explorer. I recommend [Atom] (https://www.atom.io) as a text editor, but use whatever you prefer)
+Now, go into the Truman directory and make a file called .env (if you are using windows, you cannot do this from windows explorer. I recommend [Atom](https://www.atom.io) as a text editor, but use whatever you prefer)
 
 Copy/paste everything in the file called .env.example into .env.
 This is necessary, as .env stores all your important keys and other information that you don't want to share on github.
@@ -34,7 +34,7 @@ Ok, now open another CMD and run MongoDB by entering
 ```bash
 mongo
 ```
-If this doesn't work, see tutorial on adding [mongoDB] (https://closebrace.com/tutorials/2017-03-02/the-dead-simple-step-by-step-guide-for-front-end-developers-to-getting-up-and-running-with-nodejs-express-and-mongodb) to the PATH file.
+If this doesn't work, see tutorial on adding [mongoDB](https://closebrace.com/tutorials/2017-03-02/the-dead-simple-step-by-step-guide-for-front-end-developers-to-getting-up-and-running-with-nodejs-express-and-mongodb) to the PATH file.
 
 You should see some text scroll by (LINK to MONGODB Tutorial) like this, and then enter
 ```bash
@@ -88,11 +88,15 @@ Anyway, if this has worked correctly, try refreshing your localhost browser. You
 Congrats, you have a fake social media network that you can start to play around it.
 
 ======================================================
+/n
 Step 2: Doing something interesting
 
 Ok, you've got a version of Truman running, but it's not exactly what you want. We can fix that!
 
 (I mean, you can. I'm just some text.)
 
-TODO: Let actors have their posts stay on their profile
-Change eat snap love branding (intro picture, menu bar, ToS, directions)
+To be continued...
+
+TODO:
+Let actors have their posts stay on their profile
+Fix actor commenting so they randomly comment on people's posts
