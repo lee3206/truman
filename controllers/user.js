@@ -27,7 +27,8 @@ if (req.user) {
 
     var user = req.user;
 
-    Notification.find({ $or: [ { userPost: user.numPosts  }, { userReply: user.numReplies }, { actorReply: user.numActorReplies } ] })
+    Notification.find({ $or: [ { userPost: user.numPosts  }, { actorReply: user.numActorReplies } ] })
+    //Notification.find({ $or: [ { userPost: { $lte: user.numPosts } }, { actorReply: { $lte: user.numActorReplies } } ] })
         .populate('actor')
         .exec(function (err, notification_feed) {
 
@@ -35,10 +36,10 @@ if (req.user) {
 
           if (notification_feed.length == 0)
           {
-            //peace out - send empty page - 
+            //peace out - send empty page -
             //or deal with replys or something IDK
             console.log("No User Posts yet. Bell is black");
-            return res.send({result:false}); 
+            return res.send({result:false});
           }
 
           //We have values we need to check
@@ -52,13 +53,14 @@ if (req.user) {
               {
 
                 var userPostID = notification_feed[i].userPost;
+                //this can cause issues if not found - should check on later
                 var user_post = user.getUserPostByID(userPostID);
                 var time_diff = Date.now() - user_post.absTime;
                 if (user.lastNotifyVisit)
                 {
                   var past_diff = user.lastNotifyVisit - user_post.absTime;
                 }
-                
+
                 else
                 {
                   var past_diff = 0;
@@ -66,7 +68,11 @@ if (req.user) {
 
                 if(notification_feed[i].time <= time_diff && notification_feed[i].time > past_diff)
                 {
-                  return res.send({result:true});
+
+                  if ((notification_feed[i].notificationType == "read") && (user.transparency != "no"))
+                    return res.send({result:true});
+                  if (notification_feed[i].notificationType != "read")
+                    return res.send({result:true});
                 }
 
               }//UserPost
@@ -115,7 +121,10 @@ exports.postLogin = (req, res, next) => {
     }
     if (!(user.active)) {
       console.log("FINAL");
-      req.flash('final', { msg: '' });
+      //Need to capture this in a var
+      var post_url = process.env.POST_SURVEY+user.mturkID;
+      console.log("last url is "+post_url)
+      req.flash('final', { msg: post_url });
       return res.redirect('/login');
     }
     req.logIn(user, (err) => {
@@ -166,9 +175,14 @@ exports.postSignup = (req, res, next) => {
     return res.redirect('/signup');
   }
 
-  //random assignment of experimental group
-  var result = ['no:no', 'no:low', 'no:high', 'ui:no', 'ui:low', 'ui:high'][Math.floor(Math.random() * 6)]
+/*###############################
+Place Experimental Varibles Here!
+###############################*/
+  var var_num = 4;
+  var result = ['var1', 'var2','var3', 'var4'][Math.floor(Math.random() * var_num)]
+
   var resultArray = result.split(':');
+  //[0] is script_type, [1] is post_nudge
   const user = new User({
     email: req.body.email,
     password: req.body.password,
@@ -176,9 +190,8 @@ exports.postSignup = (req, res, next) => {
     username: req.body.username,
     group: result,
     active: true,
-    ui: resultArray[0], //ui or no
-    notify: resultArray[1], //no, low or high
-    lastNotifyVisit : Date.now()
+    lastNotifyVisit : (Date.now()),
+    createdAt: (Date.now())
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
@@ -263,20 +276,28 @@ exports.getSignupInfo = (req, res) => {
 exports.getMe = (req, res) => {
 
   User.findById(req.user.id)
-  .populate({ 
+  .populate({
        path: 'posts.reply',
        model: 'Script',
        populate: {
          path: 'actor',
          model: 'Actor'
-       } 
+       }
+    })
+  .populate({
+       path: 'posts.actorAuthor',
+       model: 'Actor'
+    })
+  .populate({
+       path: 'posts.comments.actor',
+       model: 'Actor'
     })
   .exec(function (err, user) {
     if (err) { return next(err); }
 
     var allPosts = user.getPostsAndReplies();
 
-    res.render('me', { posts: allPosts });
+    res.render('me', { posts: allPosts.reverse() });
 
   });
 
@@ -459,7 +480,7 @@ exports.postReset = (req, res, next) => {
     };
     return transporter.sendMail(mailOptions)
       .then(() => {
-        req.flash('success', { msg: 'Success! Your password has been changed.' });    
+        req.flash('success', { msg: 'Success! Your password has been changed.' });
       });
   };
 
@@ -485,7 +506,7 @@ exports.getForgot = (req, res) => {
 
 /**
  * Mail A user a Reminder
- * 
+ *
  */
 var sendReminderEmail = function(user){
     if (!user) { return; }
@@ -502,15 +523,15 @@ var sendReminderEmail = function(user){
     const mailOptions = {
       to: user.email,
       from: 'do-not-reply@eatsnap.love',
-      subject: 'Remember to Checkout 🍴📷.❤️ Today',
+      subject: 'Remember to Check Out 🍴📷.❤️ Today',
       text: `Hey ${u_name},\n\n
       Just wanted to remind you to visit https://eatsnap.love today.\n
       Your participation in our study is a huge help in beta testing the app.
       Remember to fully participate in the study you must:\n
-      * create one new post each day\n 
+      * create one new post each day\n
       * login and view posts twice a day\n\n
       Thanks again for all your help and participation!\n
-      Keep Eating, Snapping and Loving!\n 
+      Keep Eating, Snapping and Loving!\n
       🍴📷.❤️ Team
       \n`
     };
@@ -524,12 +545,12 @@ var sendReminderEmail = function(user){
           console.log('Server responded with "%s"', info.response);
           transporter.close();
       });
-      
+
   };
 
 /**
  * Mail A user a Reminder
- * 
+ *
  */
 var sendFinalEmail = function(user){
     if (!user) { return; }
@@ -551,9 +572,9 @@ var sendFinalEmail = function(user){
       text: `Hey ${u_name},\n\n
       Thank you so much for participating in our study!\n
       Your participation has been a huge help in beta testing our app.
-      You have one last task to finish the study, and that is to take the final survey here at https://cornell.qualtrics.com/jfe/form/SV_8eukV6K9MLA5Au9\n\n
+      You have one last task to finish the study, and that is to take the final survey here at  `+process.env.POST_SURVEY+user.mturkID+`\n\n
       Thanks again for all your help and participation!\n
-      Keep Eating, Snapping and Loving!\n 
+      Keep Eating, Snapping and Loving!\n
       🍴📷.❤️ Team
       \n`
     };
@@ -567,7 +588,7 @@ var sendFinalEmail = function(user){
           console.log('Server responded with "%s"', info.response);
           transporter.close();
       });
-      
+
   };
 
 /**
@@ -575,23 +596,23 @@ var sendFinalEmail = function(user){
  * Forgot Password page.
  */
 exports.mailAllActiveUsers = () => {
-  console.log('$%^$%$#%$#$%%&^%&^%^&%&^$^%$%$^% MAILING ALL USERS NOW!!!!!!!!!!!!!!!'); 
-  User.find().where('active').equals(true).exec(    
+  console.log('$%^$%$#%$#$%%&^%&^%^&%&^$^%$%$^% MAILING ALL USERS NOW!!!!!!!!!!!!!!!');
+  User.find().where('active').equals(true).exec(
     function(err, users){
-    
+
     // handle error
     if (err) {
       console.log('failed: ' + err);
     } else {
       // E-mail all active users
-      for (var i = users.length - 1; i >= 0; i--) {   
+      for (var i = users.length - 1; i >= 0; i--) {
         //e-mail all non-Admins
         if (!users[i].isAdmin)
         {
           sendReminderEmail(users[i]);
         }
-      }  
-    }    
+      }
+    }
   });
 };
 
@@ -600,20 +621,20 @@ exports.mailAllActiveUsers = () => {
  * Turn off all old accounts. Groundhog admin accounts
  */
 exports.stillActive = () => {
-  User.find().where('active').equals(true).exec(    
+  User.find().where('active').equals(true).exec(
     function(err, users){
-    
+
     // handle error
     if (err) {
       console.log('failed: ' + err);
     } else {
       // E-mail all active users
       for (var i = users.length - 1; i >= 0; i--) {
-        console.log("Looking at user "+users[i].email);      
+        console.log("Looking at user "+users[i].email);
         var time_diff = Date.now() - users[i].createdAt;
         var three_days = 259200000;
 
-        console.log("Time period is  "+time_diff);  
+        console.log("Time period is  "+time_diff);
         console.log("Three days is  "+three_days);
         if (time_diff >= three_days)
         {
@@ -638,9 +659,9 @@ exports.stillActive = () => {
               });
             }
         }
-        
-      }  
-    }    
+
+      }
+    }
   });
 };
 
@@ -657,31 +678,30 @@ exports.userTestResults = (req, res) => {
   else
   {
 
-    User.find().where('active').equals(false).exec(    
+    User.find().where('active').equals(false).exec(
       function(err, users){
-      
+
       // handle error
       if (err) {
         console.log('failed: ' + err);
       } else {
         // E-mail all active users
-        for (var i = users.length - 1; i >= 0; i--) {  
-          console.log("@@@@@@@@@@Looking at user "+users[i].email);      
+        for (var i = users.length - 1; i >= 0; i--) {
+          console.log("@@@@@@@@@@Looking at user "+users[i].email);
           var time_diff = Date.now() - users[i].createdAt;
           var three_days = 259200000;
           var one_day =     86400000;
 
-          //check if completed or not yet 
+          //check if completed or not yet
           if (!users[i].completed)
           {
 
+            /*
             //check logs
             var day = [0,0,0];
             for (var j = users[i].log.length - 1; j >= 0; j--) {
-
               var logtime = users[i].log[j].time - users[i].createdAt;
               //console.log("logtime is "+logtime);
-              
 
               //day one
               if (logtime <= one_day)
@@ -690,7 +710,7 @@ exports.userTestResults = (req, res) => {
                 //console.log("!!!DAY1");
               }
               //day two
-              else if ((logtime >=one_day) && (logtime <= (one_day *2))) 
+              else if ((logtime >=one_day) && (logtime <= (one_day *2)))
               {
                 day[1]++;
                 //console.log("!!!DAY2");
@@ -701,12 +721,12 @@ exports.userTestResults = (req, res) => {
                 day[2]++;
                 //console.log("!!!DAY3");
               }
-
             }//end of LOG for loop
-          
+
             console.log("@@@@@@@@days are d1:"+day[0]+" d2:"+day[1]+" d3:"+day[2]);
             //Logged in at least twice a day, and posted at least 3 times
-            if (day[0] >=2 && day[1] >=2 && day[2] >=2 && users[i].numPosts >= 2)
+            */
+            if (users[i].study_days[0] >=2 && users[i].study_days[1] >=2 && users[i].study_days[2] >=2 && users[i].numPosts >= 2)
             {
               users[i].completed = true;
               users[i].save((err) => {
@@ -715,12 +735,12 @@ exports.userTestResults = (req, res) => {
               });
             }
           }//if User.completed
-          
-        }//for loop for all users!  
+
+        }//for loop for all users!
 
         res.render('completed', { users: users });
 
-      }///else no error    
+      }///else no error
     });//User.Find()
   }
 };

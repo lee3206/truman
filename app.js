@@ -54,7 +54,8 @@ const useravatarupload= multer({ storage: useravatar_options });
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: '.env' });
+//dotenv.load({ path: '.env' });
+dotenv.config({ path: '.env"});'})
 
 /**
  * Controllers (route handlers).
@@ -129,7 +130,7 @@ var j = schedule.scheduleJob(rule, function(){
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(expressStatusMonitor());
+//app.use(expressStatusMonitor());
 //app.use(compression());
 app.use(sass({
   src: path.join(__dirname, 'public'),
@@ -172,7 +173,7 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(lusca.xframe('SAMEORIGIN'));
+//app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 
 app.use((req, res, next) => {
@@ -219,6 +220,9 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
  * Primary app routes.
  */
 app.get('/', passportConfig.isAuthenticated, scriptController.getScript);
+
+app.get('/newsfeed/:caseID', scriptController.getScriptFeed);
+
 app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
 
 app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
@@ -283,6 +287,8 @@ app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 //getScript
 app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
 app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
+app.post('/pro_feed', passportConfig.isAuthenticated, scriptController.postUpdateProFeedAction);
+app.post('/userPost_feed', passportConfig.isAuthenticated, scriptController.postUpdateUserPostFeedAction);
 
 /**
  * API examples routes.

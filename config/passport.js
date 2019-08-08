@@ -1,15 +1,6 @@
 const passport = require('passport');
 const request = require('request');
-const InstagramStrategy = require('passport-instagram').Strategy;
 const LocalStrategy = require('passport-local').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
-const TwitterStrategy = require('passport-twitter').Strategy;
-const GitHubStrategy = require('passport-github').Strategy;
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-const OpenIDStrategy = require('passport-openid').Strategy;
-const OAuthStrategy = require('passport-oauth').OAuthStrategy;
-const OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 
 const User = require('../models/User');
 
@@ -59,7 +50,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
 
 /**
  * Sign in with Facebook.
- 
+
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_ID,
   clientSecret: process.env.FACEBOOK_SECRET,
@@ -119,7 +110,7 @@ passport.use(new FacebookStrategy({
 
 /**
  * Sign in with GitHub.
- 
+
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_ID,
   clientSecret: process.env.GITHUB_SECRET,
@@ -231,7 +222,7 @@ passport.use(new TwitterStrategy({
 
 /**
  * Sign in with Google.
- 
+
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_ID,
   clientSecret: process.env.GOOGLE_SECRET,
@@ -289,7 +280,7 @@ passport.use(new GoogleStrategy({
 
 /**
  * Sign in with LinkedIn.
- 
+
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_ID,
   clientSecret: process.env.LINKEDIN_SECRET,
@@ -351,7 +342,7 @@ passport.use(new LinkedInStrategy({
 
 /**
  * Sign in with Instagram.
- 
+
 passport.use(new InstagramStrategy({
   clientID: process.env.INSTAGRAM_ID,
   clientSecret: process.env.INSTAGRAM_SECRET,
@@ -404,7 +395,7 @@ passport.use(new InstagramStrategy({
 
 /**
  * Tumblr API OAuth.
- 
+
 passport.use('tumblr', new OAuthStrategy({
   requestTokenURL: 'http://www.tumblr.com/oauth/request_token',
   accessTokenURL: 'http://www.tumblr.com/oauth/access_token',
@@ -427,7 +418,7 @@ passport.use('tumblr', new OAuthStrategy({
 
 /**
  * Foursquare API OAuth.
- 
+
 passport.use('foursquare', new OAuth2Strategy({
   authorizationURL: 'https://foursquare.com/oauth2/authorize',
   tokenURL: 'https://foursquare.com/oauth2/access_token',
@@ -449,7 +440,7 @@ passport.use('foursquare', new OAuth2Strategy({
 
 /**
  * Steam API OpenID.
- 
+
 passport.use(new OpenIDStrategy({
   apiKey: process.env.STEAM_KEY,
   providerURL: 'http://steamcommunity.com/openid',
@@ -459,7 +450,6 @@ passport.use(new OpenIDStrategy({
 }, (identifier, done) => {
   const steamId = identifier.match(/\d+$/)[0];
   const profileURL = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_KEY}&steamids=${steamId}`;
-
   User.findOne({ steam: steamId }, (err, existingUser) => {
     if (err) { return done(err); }
     if (existingUser) return done(err, existingUser);
@@ -467,7 +457,6 @@ passport.use(new OpenIDStrategy({
       if (!error && response.statusCode === 200) {
         const data = JSON.parse(body);
         const profile = data.response.players[0];
-
         const user = new User();
         user.steam = steamId;
         user.email = `${steamId}@steam.com`; // steam does not disclose emails, prevent duplicate keys
@@ -486,7 +475,7 @@ passport.use(new OpenIDStrategy({
 
 /**
  * Pinterest API OAuth.
- 
+
 passport.use('pinterest', new OAuth2Strategy({
   authorizationURL: 'https://api.pinterest.com/oauth/',
   tokenURL: 'https://api.pinterest.com/v1/oauth/token',
@@ -514,7 +503,7 @@ exports.isAuthenticated = (req, res, next) => {
     return next();
   }
   res.redirect('/login');
-}; 
+};
 
 /**
  * Authorization Required middleware.

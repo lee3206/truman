@@ -6,7 +6,6 @@ const _ = require('lodash');
 /**
  * GET /
  * List of Script posts for Notification Feed
-
 */
 exports.getNotifications = (req, res) => {
 
@@ -19,22 +18,34 @@ exports.getNotifications = (req, res) => {
   console.log("START Notification");
 
   User.findById(req.user.id)
-  .populate({ 
+  .populate({
        path: 'posts.reply',
        model: 'Script',
        populate: {
          path: 'actor',
          model: 'Actor'
-       } 
+       }
     })
-  .populate({ 
+  .populate({
        path: 'posts.actorAuthor',
        model: 'Actor'
     })
   .exec(function (err, user) {
 
     //This is the actual array of Posts from User
+    //does not have COMMENTS in it yet - maybe have no likes or reads on USER made Comments
     var user_posts = user.getPosts();
+
+    if (user.script_type == "study3_n20")
+    {
+      scriptFilter = "study3_n20";
+      profileFilter = "study3_n20_p60";
+    }
+    else if (user.script_type == "study3_n80")
+    {
+      scriptFilter = "study3_n80";
+      profileFilter = "study_n80_p60";
+    }
 
     //Log our visit to Notifications
     user.logPage(Date.now(), "Notifications");
@@ -46,7 +57,7 @@ exports.getNotifications = (req, res) => {
 
     if (user.posts.length == 0)
     {
-        //peace out - send empty page - 
+        //peace out - send empty page -
         //or deal with replys or something IDK
         console.log("No User Posts yet. Sending to -1 to PUG");
         res.render('notification', { notification_feed: -1 });
@@ -59,16 +70,18 @@ exports.getNotifications = (req, res) => {
       userPost: Number, //which user post this action is for (0,1,2....n)
       userReply: Number, //for replys from User
       actorReply: Number,
+      CHANGED: TOOK OUT userReply (no longer in system)
       */
       console.log("RECORD IS NOW: numPost - "+user.numPosts+"| numReplies - "+user.numPosts+"| numActorReplies - "+user.numActorReplies);
-      Notification.find({ $or: [ { userPost: { $lte: user.numPosts } }, { userReply: { $lte: user.numReplies } }, { actorReply: { $lte: user.numActorReplies } } ] })
+      //Notification.find({ $or: [ { userPost: { $lte: user.numPosts } }, { actorReply: { $lte: user.numActorReplies } } ] })
+      Notification.find({ $or: [ { userPost: { $lte: user.numPosts } } ] })
         .populate('actor')
         .exec(function (err, notification_feed) {
           if (err) { return next(err); }
 
           if (notification_feed.length == 0)
           {
-            //peace out - send empty page - 
+            //peace out - send empty page -
             //or deal with replys or something IDK
             console.log("No User Posts yet. Sending to -1 to PUG");
             res.render('notification', { notification_feed: -1 });
@@ -90,9 +103,9 @@ exports.getNotifications = (req, res) => {
             if (notification_feed[i].userPost >= 0)
             {
               var userPostID = notification_feed[i].userPost;
-
+              //console.log("Looking at user post number: "+ userPostID)
               var user_post = user.getUserPostByID(userPostID);
-              
+
               //!!!!!!!!@@@@@@@@@@@@@@@This needs to change ()
               var time_diff = Date.now() - user_post.absTime;
 
@@ -100,18 +113,22 @@ exports.getNotifications = (req, res) => {
               console.log("########Notification is UserPostID "+notification_feed[i].userPost);
               console.log("########TIME in UserPostID is "+notification_feed[i].time);
               console.log("########General Time is "+time_diff);
-              
+
               //check if we show this notification yet
               if(notification_feed[i].time <= time_diff)
-              { 
+              {
                 console.log("USER POST Time is Now READY!!!!");
-                //do stuff for notification (low) read junks
-                if ((notification_feed[i].notificationType == "read") && (notification_feed[i].actor.class != "high_read") && (user.notify != "no"))
+
+                //do stuff for notification read junks (there is no low or high anymore)
+                if ((notification_feed[i].notificationType == "read") && (user.transparency != "no"))
                 {
                   var readKey = "read_"+ userPostID;
 
                   //find element in our final data structure
                   let notifyIndex = _.findIndex(final_notify, function(o) { return o.key == readKey; });
+
+                  //transparency is new user.notify
+                  //Does all transparency have high read???
 
                   //this does not exist yet, so create it
                   if (notifyIndex == -1)
@@ -134,7 +151,8 @@ exports.getNotifications = (req, res) => {
                   //find element and add actor/update time
                   else
                   {
-                    
+
+                    //if cohort actor, shift ahead of the line (to be seen first)
                     if (notification_feed[i].actor.class == "cohort")
                       {
                         final_notify[notifyIndex].actors.unshift(notification_feed[i].actor);
@@ -149,42 +167,7 @@ exports.getNotifications = (req, res) => {
                   }
                 }//end of READ
 
-                 //do stuff for notification (high) read junks
-                else if ((notification_feed[i].notificationType == "read") && (notification_feed[i].actor.class == "high_read") && (user.notify == "high"))
-                {
-                  var readKey = "read_"+ userPostID;
-
-                  //find element in our final data structure
-                  let notifyIndex = _.findIndex(final_notify, function(o) { return o.key == readKey; });
-
-                  //this does not exist yet, so create it
-                  if (notifyIndex == -1)
-                  {
-                    let read_tmp = {};
-                    read_tmp.key = readKey;
-                    read_tmp.action = 'read';
-                    read_tmp.postID = userPostID;
-                    read_tmp.body = user_post.body;
-                    read_tmp.picture = user_post.picture;
-                    read_tmp.time = Date.parse(user_post.absTime) + notification_feed[i].time;
-                    console.log("TIME  is");
-                    console.log(read_tmp.time)
-                    read_tmp.actors = [];
-                    read_tmp.actors.push(notification_feed[i].actor);
-
-                    final_notify.push(read_tmp);
-                  }
-
-                  //find element and add actor/update time
-                  else
-                  {
-                    final_notify[notifyIndex].actors.push(notification_feed[i].actor);
-                    if ((user_post.absTime + notification_feed[i].time) > final_notify[notifyIndex].time)
-                    { final_notify[notifyIndex].time = user_post.absTime + notification_feed[i].time;}
-                  }
-                }//end of high READ
-
-                //do stuff for notification LIKE 
+                //do stuff for notification LIKE
                 else if (notification_feed[i].notificationType == "like")
                 {
                   var likeKey = "like_"+ userPostID;
@@ -246,19 +229,18 @@ exports.getNotifications = (req, res) => {
             ###################################################################
             All things reference a User Reply (read like, etc)
             ###################################################################
-            */
+
             else if (notification_feed[i].userReply >= 0)
             {
-
               var userReplyID = notification_feed[i].userReply;
-
+              //If in future, want this to work on COMMENTS, need to change this function
               var user_reply = user.getUserReplyByID(userReplyID);
               console.log("USER REPLY NOTIFICATION");
               console.log("########Notification is UserReplyID "+notification_feed[i].userReply);
-              
+
               //!!!!!!!!@@@@@@@@@@@@@@@This needs to change ()
               var time_diff = Date.now() - user_reply.absTime;
-              
+
               //check if we show this notification yet
               if(notification_feed[i].time <= time_diff)
               {
@@ -267,12 +249,9 @@ exports.getNotifications = (req, res) => {
                 if ((notification_feed[i].notificationType == "read") && (notification_feed[i].actor.class != "high_read") && (user.notify != "no"))
                 {
                   var readKey = "reply_read_"+ userReplyID;
-
                   console.log("USER REPLY READ READY AREA");
-
                   //find element in our final data structure
                   let notifyIndex = _.findIndex(final_notify, function(o) { return o.key == readKey; });
-
                   //this does not exist yet, so create it
                   if (notifyIndex == -1)
                   {
@@ -287,14 +266,12 @@ exports.getNotifications = (req, res) => {
                     read_tmp.time = Date.parse(user_reply.absTime) + notification_feed[i].time;
                     read_tmp.actors = [];
                     read_tmp.actors.push(notification_feed[i].actor);
-
                     final_notify.push(read_tmp);
                   }
-
                   //find element and add actor/update time
                   else
                   {
-                    
+
                     if (notification_feed[i].actor.class == "cohort")
                       {
                         final_notify[notifyIndex].actors.unshift(notification_feed[i].actor);
@@ -303,22 +280,16 @@ exports.getNotifications = (req, res) => {
                       {
                         final_notify[notifyIndex].actors.push(notification_feed[i].actor);
                       }
-
                     if ((user_reply.absTime + notification_feed[i].time) > final_notify[notifyIndex].time)
                     { final_notify[notifyIndex].time = user_reply.absTime + notification_feed[i].time;}
                   }
-
-
                 }//end of READ
-
                  //do stuff for notification (high) read junks
                 if ((notification_feed[i].notificationType == "read") && (notification_feed[i].actor.class == "high_read") && (user.notify == "high"))
                 {
                   var readKey = "reply_read_"+ userReplyID;
-
                   //find element in our final data structure
                   let notifyIndex = _.findIndex(final_notify, function(o) { return o.key == readKey; });
-
                   //this does not exist yet, so create it
                   if (notifyIndex == -1)
                   {
@@ -333,10 +304,8 @@ exports.getNotifications = (req, res) => {
                     read_tmp.time = Date.parse(user_reply.absTime) + notification_feed[i].time;
                     read_tmp.actors = [];
                     read_tmp.actors.push(notification_feed[i].actor);
-
                     final_notify.push(read_tmp);
                   }
-
                   //find element and add actor/update time
                   else
                   {
@@ -344,20 +313,14 @@ exports.getNotifications = (req, res) => {
                     if ((user_reply.absTime + notification_feed[i].time) > final_notify[notifyIndex].time)
                     { final_notify[notifyIndex].time = user_reply.absTime + notification_feed[i].time;}
                   }
-
-
                 }//end of high READ
-
-                //do stuff for notification LIKE 
+                //do stuff for notification LIKE
                 else if (notification_feed[i].notificationType == "like")
                 {
                   var likeKey = "reply_like_"+ userReplyID;
-
                   console.log("USER REPLY LIKE READY AREA");
-
                   //find element in our final data structure
                   let notifyIndex = _.findIndex(final_notify, function(o) { return o.key == likeKey; });
-
                   //this does not exist yet, so create it
                   if (notifyIndex == -1)
                   {
@@ -372,56 +335,42 @@ exports.getNotifications = (req, res) => {
                     like_tmp.time = Date.parse(user_reply.absTime) + notification_feed[i].time;
                     like_tmp.actors = [];
                     like_tmp.actors.push(notification_feed[i].actor);
-
                     final_notify.push(like_tmp);
                   }
-
                   //find element and add actor/update time
                   else
                   {
                     final_notify[notifyIndex].actors.push(notification_feed[i].actor);
                     final_notify[notifyIndex].time = Date.parse(user_reply.absTime) + notification_feed[i].time;
                   }
-
-
                 }//end of LIKE
-
               }//end of time_diff
-
             }//end of User Reply
-
             /*
             ###################################################################
             All things reference an Actor Reply (read, like, etc)
             ###################################################################
-            */
+
             else if (notification_feed[i].actorReply >= 0)
             {
-
               var actorReplyID = notification_feed[i].actorReply;
-
               var actor_reply = user.getActorReplyByID(actorReplyID);
-              
-              var time_diff = Date.now() - actor_reply.absTime;
 
+              var time_diff = Date.now() - actor_reply.absTime;
               console.log("ACTOR REPLY NOTIFICATION");
               console.log("########Notification is ActorReplyID "+notification_feed[i].actorReply);
-              
+
               //check if we show this notification yet
               if(notification_feed[i].time <= time_diff)
               {
-
                 console.log("MADE TIME IN ACTOR REPLY");
                 //do stuff for notification (low) read junks
                 if ((notification_feed[i].notificationType == "read") && (notification_feed[i].actor.class != "high_read") && (user.notify != "no"))
                 {
                   var readKey = "actor_reply_read_"+ actorReplyID;
-
                   //find element in our final data structure
                   let notifyIndex = _.findIndex(final_notify, function(o) { return o.key == readKey; });
-
                   console.log("ACTOR REPLY Inside Read");
-
                   //this does not exist yet, so create it
                   if (notifyIndex == -1)
                   {
@@ -435,14 +384,12 @@ exports.getNotifications = (req, res) => {
                     read_tmp.time = Date.parse(actor_reply.absTime) + notification_feed[i].time;
                     read_tmp.actors = [];
                     read_tmp.actors.push(notification_feed[i].actor);
-
                     final_notify.push(read_tmp);
                   }
-
                   //find element and add actor/update time
                   else
                   {
-                    
+
                     if (notification_feed[i].actor.class == "cohort")
                       {
                         final_notify[notifyIndex].actors.unshift(notification_feed[i].actor);
@@ -451,22 +398,16 @@ exports.getNotifications = (req, res) => {
                       {
                         final_notify[notifyIndex].actors.push(notification_feed[i].actor);
                       }
-
                     if ((actor_reply.absTime + notification_feed[i].time) > final_notify[notifyIndex].time)
                     { final_notify[notifyIndex].time = actor_reply.absTime + notification_feed[i].time;}
                   }
-
-
                 }//end of READ
-
                  //do stuff for notification (high) read junks
                 else if ((notification_feed[i].notificationType == "read") && (notification_feed[i].actor.class == "high_read") && (user.notify == "high"))
                 {
                   var readKey = "actor_reply_read_"+ actorReplyID;
-
                   //find element in our final data structure
                   let notifyIndex = _.findIndex(final_notify, function(o) { return o.key == readKey; });
-
                   //this does not exist yet, so create it
                   if (notifyIndex == -1)
                   {
@@ -482,10 +423,8 @@ exports.getNotifications = (req, res) => {
                     console.log(read_tmp.time)
                     read_tmp.actors = [];
                     read_tmp.actors.push(notification_feed[i].actor);
-
                     final_notify.push(read_tmp);
                   }
-
                   //find element and add actor/update time
                   else
                   {
@@ -493,20 +432,14 @@ exports.getNotifications = (req, res) => {
                     if ((actor_reply.absTime + notification_feed[i].time) > final_notify[notifyIndex].time)
                     { final_notify[notifyIndex].time = actor_reply.absTime + notification_feed[i].time;}
                   }
-
-
                 }//end of high READ
-
-                //do stuff for notification LIKE 
+                //do stuff for notification LIKE
                 else if ((notification_feed[i].notificationType == "like") && (user.notify != "no"))
                 {
                   var likeKey = "actor_reply_like_"+ actorReplyID;
-
                   //find element in our final data structure
                   let notifyIndex = _.findIndex(final_notify, function(o) { return o.key == likeKey; });
-
                   console.log("ACTOR REPLY Inside Like");
-
                   //this does not exist yet, so create it
                   if (notifyIndex == -1)
                   {
@@ -520,23 +453,18 @@ exports.getNotifications = (req, res) => {
                     like_tmp.time = Date.parse(actor_reply.absTime) + notification_feed[i].time;
                     like_tmp.actors = [];
                     like_tmp.actors.push(notification_feed[i].actor);
-
                     final_notify.push(like_tmp);
                   }
-
                   //find element and add actor/update time
                   else
                   {
                     final_notify[notifyIndex].actors.push(notification_feed[i].actor);
                     final_notify[notifyIndex].time = Date.parse(actor_reply.absTime) + notification_feed[i].time;
                   }
-
-
                 }//end of LIKE for Actor Reply
-
               }//Time Diff
-
             }//Actor Reply
+            */
 
 
             //not post, reply or actor reply
