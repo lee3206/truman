@@ -2,35 +2,42 @@
   {
     "id":0,
      "username":"[ADMIN]",
+     "profile": {
         "name":"???",
         "gender":"???",
         "location":"Everywhere",
         "picture":"",
         "bio":"",
         "age":-999
+      }
   },
    {
      "id":1,
       "username":"MagicMo",
+      "profile": {
          "name":"Mo Kapadia",
          "gender":"Male",
          "location":"New York, NY",
          "picture":"tarot1.jpg",
          "bio":"I've got the magic touch for food! Professional chef and all-around awesome guy",
          "age":27
+       }
    },
    {
       "id":2,
       "username":"livelaughlovelady",
+      "profile": {
          "name":"Elizabeth Newman",
          "gender":"Female",
          "location":"McLane, VA",
          "picture":"tarot2.jpg",
          "bio":"love my husband, kids, and creative cooking... oh, and don't forget the wine!",
          "age":35
+       }
    },
    {
      "id":3,
+     "profile": {
       "username":"naturequeen",
          "name":"Emma Hanson",
          "gender":"Female",
@@ -38,9 +45,11 @@
          "picture":"tarot3.png",
          "bio":"living the vegan life since 2002! Ask me about my fav plant-based recipes!",
          "age":26
+       }
    },
    {
      "id":4,
+     "profile": {
       "username":"Emperor_M",
          "name":"Marvin Reynolds",
          "gender":"Male",
@@ -48,19 +57,23 @@
          "picture":"tarot4.png",
          "bio":"I work as a software engineer. Not a lot of posts from me.",
          "age":35
+       }
    },
    {
      "id":5,
       "username":"bishop.bobby",
+      "profile": {
          "name":"John Roberts",
          "gender":"Male",
          "location":"Baltimore, MD",
          "picture":"tarot5.jpg",
          "bio":"hello. Not sure what to put here.",
          "age":31
+       }
    },
    {
      "id":6,
+     "profile": {
       "username":"love_them_all",
          "name":"Eva Matthews",
          "gender":"Female",
@@ -68,19 +81,23 @@
          "picture":"tarot6.jpg",
          "bio":"I love my kids, my husband, and my '73 mustang. You all are doing great!",
          "age":41
+       }
    },
    {
      "id":7,
       "username":"gottagofast",
+      "profile": {
          "name":"Kelly Xiao",
          "gender":"Female",
          "location":"Boston, MA",
          "picture":"tarot7.jpg",
          "bio":"You all know who I am, make sure to leave a comment!",
          "age":22
+       }
    },
    {
      "id":8,
+     "profile": {
       "username":"Strong_Man",
          "name":"Noah Marshall",
          "gender":"Male",
@@ -88,146 +105,174 @@
          "picture":"tarot8.jpg",
          "bio":"breakfast all day",
          "age":28
+       }
    },
    {
      "id":9,
       "username":"hidden_hermit",
+      "profile": {
          "name":"Manuel De Leon",
          "gender":"Male",
          "location":"Burbank, CA",
          "picture":"tarot9.png",
          "bio":"I'm not really one for social networks, but I thought I would try this out. I don't want to make friends here, just see what's going on in the world.",
          "age":63
+       }
    },
    {
      "id":10,
       "username":"wheel_in_the_sky",
+      "profile": {
          "name":"Ananya Agarwal",
          "gender":"Female",
          "location":"San Francisco, CA",
          "picture":"tarot10.jpg",
          "bio":"im posting all off it, the good and bad!!!!!!!!!",
          "age":25
+       }
    },
    {
       "id":11,
       "username":"justice.for.all",
+      "profile": {
          "name":"Mateo Valdez",
          "gender":"Male",
          "location":"Anaheim, CA",
          "picture":"tarot11.png",
          "bio":"burgers beer \u0026baseball",
          "age":40
+       }
    },
    {
      "id":12,
       "username":"hanginaround",
+      "profile": {
          "name":"Riya",
          "gender":"Female",
          "location":"North Hempstead, NY",
          "picture":"tarot12.jpg",
          "bio":"artisan mugs and artisan hugs",
          "age":27
+       }
    },
    {
      "id":13,
       "username":"death_defying_JC",
+      "profile": {
          "name":"Josiah Coleman",
          "gender":"Male",
          "location":"Charlotte, NC",
          "picture":"tarot13.jpg",
          "bio":"Life has ups and downs, but just remember no one makes it out alive 💀",
          "age":26
+       }
    },
    {
      "id":14,
       "username":"total_balance",
+      "profile": {
          "name":"Aikira Walker",
          "gender":"Female",
          "location":"Austin, TX",
          "picture":"tarot14.jpg",
          "bio":"Hey all, just living my best life and making sure to post all the good things that happen",
          "age":26
+       }
    },
    {
      "id":15,
       "username":"Devil.in.the.Details",
+      "profile": {
          "name":"Max Vander",
          "gender":"Male",
          "location":"Newark, NJ",
          "picture":"tarot15.jpg",
          "bio":"Don't hate me cause I'm awesome, hate me cause I'm right 👹",
          "age":23
+       }
    },
    {
      "id":16,
       "username":"tower.wrecker",
+      "profile": {
          "name":"Alex Lee",
          "gender":"Male",
          "location":"Plano, TX",
          "picture":"tarot16.jpg",
          "bio":"blogger, dreamer, traveller, chef",
          "age":25
+       }
    },
    {
      "id":17,
       "username":"star_striker",
+      "profile": {
          "name":"Robby Freman",
          "gender":"Male",
          "location":"Wichita, KA",
          "picture":"tarot17.png",
          "bio":"a smile is never the wrong decision 😀",
          "age":28
+       }
    },
    {
      "id":18,
       "username":"luna_lover",
+      "profile": {
          "name":"Tiana Brown",
          "gender":"Female",
          "location":"Colombus, OH",
          "picture":"tarot18.png",
          "bio": "Adulting is hard so I'm taking pics to prove to myself that I can do it! Its a long journey and I'm so happy that my friends help me so much. You all know who you are! Haters can avoid commenting on me, I'll block you!",
          "age":28
+       }
    },
    {
       "id":19,
       "username":"sunflower_gurl",
+      "profile": {
          "name":"Sophia P.",
          "gender":"Female",
          "location":"Jersey City, NJ",
          "picture":"tarot19.png",
          "bio":"**food**photos**earth-friendly fashion**",
          "age":27
+       }
    },
    {
       "id":20,
       "username":"expanded_mind",
+      "profile": {
          "name":"Cassie Reed",
          "gender":"Female",
          "location":"White Plains, NY",
          "picture":"tarot20.jpg",
          "bio":"Exploring my inner and outer worlds!",
          "age":24
+       }
    },
    {
       "id":21,
       "username":"all_across_the_universe",
+      "profile": {
          "name":"Yann Bao",
          "gender":"Yes",
          "location":"Salt Lake City, UT",
          "picture":"tarot21.png",
          "bio":"Here, there, and everywhere. All around the world!",
          "age": 27
+       }
    },
    {
      "id":22,
      "username":"rambling_traveler",
+     "profile": {
         "name":"Lydia Gott",
         "gender":"Female",
         "location":"Beijing, China",
         "picture":"tarot22.jpg",
         "bio":"One lucky fool going on her life's journey! 🤗 I'm going to be posting all the cool people, places, and food I encounter on my journies!🗺",
         "age": 32
-
+      }
    }
  ]

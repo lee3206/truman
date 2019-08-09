@@ -88,12 +88,14 @@ html
   script(src='/public/js/lib/humanized_time_span.js')
   //script(src='/js/lib/lazyload.transpiled.min.js')
   //script(src='/js/lib/bootstrap.min.js') humanized_time_span.js
+  //<script src="lazysizes.min.js" async=""></script>
+  script(src='/public/js/lib/lazysizes.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js')
   script(src='/public/js/main.js')
 
   body
     .ui.vertically.padded.grid.container
-      include partials/ui_header
+      include partials/ui_header_no
       include partials/ui_flash
       block content
 

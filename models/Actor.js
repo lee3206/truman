@@ -4,13 +4,14 @@ const actorSchema = new mongoose.Schema({
   class: String, //normal, bully, victim, highread,cohort
   id: String,
   username: String,
+  /*
   name: String,
   gender: String,
   age: Number,
   location: String,
   bio: String,
   picture: String
-  /*Removing profile
+  */
   profile: {
     name: String,
     gender: String,
@@ -19,7 +20,6 @@ const actorSchema = new mongoose.Schema({
     bio: String,
     picture: String
   }
-  */
 }, { timestamps: true });
 
 //Pretty sure this is dead code
