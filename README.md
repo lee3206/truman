@@ -17,9 +17,10 @@ Tutorial (Getting started by running on your local machine)
 
 To start with, you should download the following programs
 - [MongoDB](https://www.mongodb.com/download-center/community)
+  - Instructions on [how to install MongoDB for Mac, Windows, etc.](https://docs.mongodb.com/manual/administration/install-community/)
 - [Node.js 8.0+](http://nodejs.org)
 - [Docker installation](https://docs.docker.com/engine/installation/)
-- [Common problems setting up docker](https://docs.docker.com/toolbox/faqs/troubleshoot/)
+  - [Common problems setting up docker](https://docs.docker.com/toolbox/faqs/troubleshoot/)
 
 4: ???
 
@@ -34,10 +35,11 @@ Ok, now open another CMD and run MongoDB by entering
 ```bash
 mongo
 ```
-(If on a MAC and running into errors, check this [stack](https://stackoverflow.com/questions/11707938/mongodb-installed-via-homebrew-not-working) post
+(If on a MAC and running into errors, check this [stack](https://stackoverflow.com/questions/11707938/mongodb-installed-via-homebrew-not-working) post)
+
 If this doesn't work, see tutorial on adding [mongoDB](https://closebrace.com/tutorials/2017-03-02/the-dead-simple-step-by-step-guide-for-front-end-developers-to-getting-up-and-running-with-nodejs-express-and-mongodb) to the PATH file.
 
-You should see some text scroll by (LINK to MONGODB Tutorial) like this, and then enter
+You should see some text scroll by, and then enter
 ```bash
 use test
 ```
