@@ -74,15 +74,15 @@ Where are all the actors!?
 
 Well, you need to place them into the database. Currently, nothing is in there.
 
-To fix this, go into docker. I'm sure there is another way to do this, but here is how I do it.
-
-First, download the Kitematic Docker visualizer. Then, click the EXEC button to create a CMD within the docker!
+To fix this, go into Docker. Move to the truman container called truman_web_1 and open a CLI (command line interface).
 
 From here, type
 
 ```
 node populate.js
 ```
+into the CLI.
+
 You should see some text scroll up about adding some actors and posts. These are drawn from the folder "final_data" in truman.
 If you decide to edit this data (You probably should to fit with your project) this is where you will go.
 
