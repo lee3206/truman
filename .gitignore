@@ -36,3 +36,4 @@ bower_components
 .DS_Store
 Thumbs.db
 views/com2.pug
+.env
