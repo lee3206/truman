@@ -45,7 +45,11 @@ dotenv.load({ path: '.env' });
 var MongoClient = require('mongodb').MongoClient
  , assert = require('assert');
 
-mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI, {useNewUrlParser: true});
+mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex:true,
+});
 var db = mongoose.connection;
 mongoose.connection.on('error', (err) => {
   console.error(err);
