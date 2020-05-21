@@ -1,22 +1,64 @@
 [
   {
-    "body": "Just sharing a snack I had yesterday!",
+    "body": "Hey everyone, it's me! Just sharing a snack I had yesterday!",
     "post_id": 0,
     "actor": "gottagofast",
     "picture": "IMG_PSR1.jpg",
-    "likes": 10,
-    "lowread": 21,
+    "likes": 24,
+    "lowread": 126,
     "highread": 180,
     "time": "-9:35"
   },
   {
-    "body": "Hey all you Kelly's Krew folks! It's me, your number one social media star! I wanted to share a snack I had yesterday. Share yours with me and I'll repost it here. Use my hashtag #KellysKrew!",
+    "body": "Hey all you Kelly's Krew folks! It's me, your number one social media star! Just sharing a snack I had yesterday. Share yours with me and I'll repost it here. Use my hashtag #KellysKrew!",
     "post_id": 1,
     "actor": "gottagofast",
     "picture": "IMG_PSR1.jpg",
-    "likes": 10,
-    "lowread": 21,
-    "highread": 153,
+    "likes": 24,
+    "lowread": 126,
+    "highread": 180,
     "time": "-0:23"
-  }
+  },
+  {
+    "body": "Hey everyone, I'm out at the beach! I'm loving it here",
+    "post_id": 2,
+    "actor": "gottagofast",
+    "picture": "IMG_1F4.jpg",
+    "likes": 24,
+    "lowread": 126,
+    "highread": 180,
+    "time": "-0:20"
+  },
+  {
+    "body": "#KellysKrew, out at the beach with all of you! Remember to hit the like button to send me your love",
+    "post_id": 3,
+    "actor": "gottagofast",
+    "picture": "IMG_1F4.jpg",
+    "likes": 24,
+    "lowread": 126,
+    "highread": 180,
+    "time": "-0:13"
+  },
+  {
+    "body": "Hey all! I just got this gift and I'm going to send it out to a friend. Thanks so much to my best friend Tina! She is the greatest!",
+    "post_id": 4,
+    "actor": "gottagofast",
+    "picture": "IMG_PSR2.jpg",
+    "likes": 24,
+    "lowread": 126,
+    "highread": 180,
+    "time": "-0:20"
+  },
+  {
+    "body": "#KellysKrew!!!! Check it out Krew, I just got this gift and I'm going to send it to one of you! Thanks to everyone who liked and used my links, you are all the greatest!!!",
+    "post_id": 5,
+    "actor": "gottagofast",
+    "picture": "IMG_PSR2.jpg",
+    "likes": 24,
+    "lowread": 126,
+    "highread": 180,
+    "time": "-0:13"
+  },
+]
+
 ]

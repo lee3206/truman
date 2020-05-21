@@ -88,7 +88,7 @@ If you decide to edit this data (You probably should to fit with your project) t
 
 Anyway, if this has worked correctly, try refreshing your localhost browser. You should now be displaying a bunch of posts!
 
-Congrats, you have a fake social media network that you can start to play around it.
+Congrats, you have a fake social media network that you can start to play around with.
 
 ======================================================
 /n

@@ -237,13 +237,13 @@ app.get('/tos', function (req, res) {
 })
 
 app.get('/com', function (req, res) {
-  res.render('com', {
+  res.render('com_2', {
     title: 'Community Rules'
   });
 });
 
 app.get('/info', passportConfig.isAuthenticated, function (req, res) {
-  res.render('info', {
+  res.render('info2', {
     title: 'User Docs'
   });
 });
