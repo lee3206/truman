@@ -30,20 +30,20 @@
     "time": "-0:01"
   },
   {
-    "body": "Ok, now please return to the survey. Use the code 'extruman' on the next page along with your username"
+    "body": "Ok, now please return to the survey. Use the code 'extruman' on the next page along with your username",
     "post_id":6,
-    "actor":"admin",
-    "picture": "",
+    "actor":"[ADMIN]",
+    "picture": "IMG_end.jpg",
     "likes":0,
     "lowread": 0,
     "highread": 0,
     "time": "0:05"
   },
   {
-    "body": "Taking a break with my #KellysKrew! Pho hits the spot doesn't it Krew? Let me know your favorite soups in the comments!",
+    "body": "Taking a break with my #KellysKrew! Pho hits the spot doesn't it Krew? Let me know your favorite foods in the comments!",
     "post_id": 7,
     "actor": "gottagofast",
-    "picture": "IMG_C2.jpg",
+    "picture": "IMG_1C2.jpg",
     "likes": 24,
     "lowread": 126,
     "highread": 180,
@@ -53,7 +53,7 @@
     "body": "Sometimes even a social media star like me has to stop and study #KellysKrew! What are some of your favorite study tips? Your Kelly needs the help!",
     "post_id": 8,
     "actor": "gottagofast",
-    "picture": "IMG_C3.jpg",
+    "picture": "IMG_1C3.jpg",
     "likes": 24,
     "lowread": 126,
     "highread": 180,
