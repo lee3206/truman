@@ -10,16 +10,6 @@
     "time": "-9:35"
   },
   {
-    "body": "Hey all you Kelly's Krew folks! It's me, your number one social media star! Just sharing a snack I had yesterday. Share yours with me and I'll repost it here. Use my hashtag #KellysKrew!",
-    "post_id": 1,
-    "actor": "gottagofast",
-    "picture": "IMG_PSR1.jpg",
-    "likes": 24,
-    "lowread": 126,
-    "highread": 180,
-    "time": "-0:23"
-  },
-  {
     "body": "Hey everyone, I'm out at the beach! I'm loving it here",
     "post_id": 2,
     "actor": "gottagofast",
@@ -28,16 +18,6 @@
     "lowread": 126,
     "highread": 180,
     "time": "-0:20"
-  },
-  {
-    "body": "#KellysKrew, out at the beach with all of you! Remember to hit the like button to send me your love",
-    "post_id": 3,
-    "actor": "gottagofast",
-    "picture": "IMG_1F4.jpg",
-    "likes": 24,
-    "lowread": 126,
-    "highread": 180,
-    "time": "-0:13"
   },
   {
     "body": "Hey all! I just got this gift and I'm going to send it out to a friend. Thanks so much to my best friend Tina! She is the greatest!",
@@ -50,13 +30,33 @@
     "time": "-0:04"
   },
   {
-    "body": "#KellysKrew! Check it out Krew, I just got this gift and I'm going to send it to one of you! Thanks to everyone who liked and used my links, you are all the greatest!",
-    "post_id": 5,
+    "body": "Ok, now please return to the survey. There are some more posts if you would like to read those as well. Use the code 'truman' on the next page of the survey along with your username",
+    "post_id":7,
+    "actor":"[ADMIN]",
+    "picture": "IMG_end.jpg",
+    "likes":0,
+    "lowread": 0,
+    "highread": 0,
+    "time": "0:05"
+  },
+  {
+    "body": "Taking a break with my soup! Pho hits the spot doesn't it? I hope other people get to relax with their favorites!",
+    "post_id": 8,
     "actor": "gottagofast",
-    "picture": "IMG_PSR2.jpg",
+    "picture": "IMG_C2.jpg",
     "likes": 24,
     "lowread": 126,
     "highread": 180,
-    "time": "-0:01"
+    "time": "0:06"
+  },
+  {
+    "body": "Sometimes even an awesome person like me has to stop and study! What are some of your favorite study tips? I need the help!",
+    "post_id": 10,
+    "actor": "gottagofast",
+    "picture": "IMG_C3.jpg",
+    "likes": 24,
+    "lowread": 126,
+    "highread": 180,
+    "time": "0:06"
   }
 ]
