@@ -69,9 +69,12 @@ const userSchema = new mongoose.Schema({
     report_issue: String,
     actorName: String
     })],
-
+    
+//LOTS OF ERRORS AROUND THIS BAD BOOOOYYYYYYY
   feedAction: [new Schema({
+    //I think the issue is matching object ID vs postID
         post: {type: Schema.ObjectId, ref: 'Script'},
+        //post: {type: Schema.postID, ref: 'Script'},
         postClass: String,
         rereadTimes: Number, //number of times post has been viewed by user
         startTime: Number, //always the newest startTime (full date in ms)

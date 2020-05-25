@@ -27,14 +27,14 @@ exports.getActor = (req, res, next) => {
   console.log(req.params.userId);
   console.log("Time Diff");
   console.log(time_diff);
-
+  //Find a user (which is actually an actor)
   User.findById(req.user.id)
   .exec(function (err, user) {
-
+  //See, we are actually finding an actor
 	Actor.findOne({ username: req.params.userId}, (err, act) => {
     if (err) { console.log(err); return next(err); }
 
-
+    //If the actor isn't here, return NULLLLLLLLLLL, else, print actor to console
     if (act == null) {console.log("NULLLLLLLLLLL");  var myerr = new Error('Record not found!'); return next(myerr); }
 
     console.log(act);
@@ -44,7 +44,7 @@ exports.getActor = (req, res, next) => {
     console.log("We found an actor!")
 
     var isBlocked;
-
+    //If the user (actually an actor) is blocked by the user, block, if not don't
     if (user.blocked.includes(req.params.userId))
     {
       isBlocked = true;
@@ -53,20 +53,45 @@ exports.getActor = (req, res, next) => {
     {
       isBlocked = false;
     }
-
+    //Look in the script and match to id.
     Script.find({ actor: act.id})
-    .where('time').lte(time_diff)
+    //Maybe it's the time? Turning it off didn't seem to do anything, but I removed anyway
+    .where('time')//.lte(time_diff)
+    //sort in reverse time order?
     .sort('-time')
+    //
     .populate('actor')
     .populate({
-     //path: 'comments.actor',
+         path: 'posts.reply',
+         model: 'Script',
+         populate: {
+           path: 'actor',
+           model: 'Actor'
+         }
+      })
+    .populate({
+         path: 'posts.actorAuthor',
+         model: 'Actor'
+      })
+    .populate({
+         path: 'posts.comments.actor',
+          model: 'Actor'
+      })
+    /*
+    .populate({
+     path: 'comments.actor',
      //I think something is broken here for having bios contain all posts
+     populate: {
+       path: 'actor',
+       model: 'Actor'
+     },
      path: 'reply',
      populate: {
        path: 'actor',
        model: 'Actor'
        }
     })
+    */
     .exec(function (err, script_feed) {
       if (err) { console.log(err); return next(err); }
 
@@ -91,20 +116,20 @@ exports.getActor = (req, res, next) => {
             {
               script_feed[i].like = true;
               script_feed[i].likes++;
-              //console.log("Post %o has been LIKED", script_feed[i].id);
+              console.log("Post %o has been LIKED", script_feed[i].id);
             }
 
             if (user.feedAction[feedIndex].replyTime[0])
             {
               script_feed[i].reply = true;
-              //console.log("Post %o has been REPLIED", script_feed[i].id);
+              console.log("Post %o has been REPLIED", script_feed[i].id);
             }
 
             //If this post has been flagged - remove it from FEED array (script_feed)
             if (user.feedAction[feedIndex].flagTime[0])
             {
               script_feed.splice(i,1);
-              //console.log("Post %o has been FLAGGED", script_feed[i].id);
+              console.log("Post %o has been FLAGGED", script_feed[i].id);
             }
 
           }//end of IF we found Feed_action

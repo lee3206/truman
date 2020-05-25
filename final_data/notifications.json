@@ -1,0 +1,37 @@
+[
+  {
+    "userPost":0,
+    "actor": 2,
+    "notificationType":"read",
+    "time":120000
+  },
+
+  {
+    "userPost":0,
+    "actor": 3,
+    "notificationType":"reply",
+    "replyBody":"Looking good :)",
+    "time":302110
+  },
+
+  {
+    "userReply":1,
+    "actor": 2,
+    "notificationType":"like",
+    "time":240000
+  },
+
+  {
+    "userReply":0,
+    "actor": 3,
+    "notificationType":"read",
+    "time":1500000
+  },
+
+  {
+    "actorReply":2,
+    "actor":4,
+    "notificationType":"read",
+    "time":414000
+  }
+]

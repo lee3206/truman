@@ -29,7 +29,7 @@ async function readData(){
     await console.log("Read the actors");
     actors_list= await require('./final_data/actors.json');
     await console.log("Read the notifications");
-    notifications_list= await require('./final_data/test_notifications.json');
+    notifications_list= await require('./final_data/notifications.json');
     //A script is synonomous with posts
     await console.log("Read the posts");
     final_script = await require('./final_data/script.json');
@@ -64,6 +64,9 @@ function dropCollections() {
     });
     db.collections['scripts'].drop(function (err) {
         console.log('scripts collection dropped');
+    });
+    db.collections['notifications'].drop(function (err) {
+        console.log('notifications collection dropped');
     });
 }
 
@@ -197,6 +200,40 @@ function createPostInstances(){
 }
 
 /*************************
+createNotifications
+*************************/
+function createNotifications() {
+
+  async.each(notifications_list, function(notif1, callback){
+    notifdetail = {};
+
+    notifdetail.notificationType = notif1.notificationType
+    notifdetail.userPost = notif1.userPost  //which user post this action is for (0,1,2....n) - includes actual Actor Reply (since it refs a user post)
+    notifdetail.userReply = notif1.userReply  //for replys from User
+    notifdetail.actorReply = notif1.actorReply  //Ref for an Action on a Actor reply (like reads, likes, etc)
+    notifdetail.actor = notif1.actor //actor who did the action (read,likes, replied)
+    notifdetail.time = notif1.time //in millisecons
+    notifdetail.replyBody = notif1.replyBody
+
+    var notification = new Notification(notifdetail);
+
+    notification.save(function (err) {
+      if (err) {
+        console.log("Something went wrong adding a notification!")
+        return -1;
+      }
+      console.log('notification from ' + notif1.actor);
+      callback();
+    });
+  },
+    function (err){
+      console.log("All done with notifications!")
+      return 'Loaded Notifications'
+    }
+  );
+}
+
+/*************************
 createPostRepliesInstances:
 Creates inline comments for each post
 Looks up actors (by comparing the name of the actor who mande the comment with the username)
@@ -289,6 +326,7 @@ async function loadDatabase(){
     await promisify(createActorInstances); //creates all of the actors
     await promisify(createPostInstances); //creates their posts
     await promisify(createPostRepliesInstances); //creates replies to the posts
+    //await promisify(createNotifications);
   }catch (err){
     console.log('Error occurred in loading into DB', err);
   }

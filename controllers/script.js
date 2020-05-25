@@ -19,6 +19,10 @@ exports.getScript = (req, res, next) => {
   var user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var userAgent = req.headers['user-agent'];
 
+  var finalfeed = [];
+
+  var user_posts = [];
+
 
   console.log("$#$#$#$#$#$#$START GET SCRIPT$#$#$$#$#$#$#$#$#$#$#$#$#");
   User.findById(req.user.id)
@@ -69,9 +73,9 @@ exports.getScript = (req, res, next) => {
         //Successful, so render
 
         //update script feed to see if reading and posts has already happened
-        var finalfeed = [];
+        //var finalfeed = [];
 
-        var user_posts = [];
+        //var user_posts = [];
 
         //Look up Notifications??? And do this as well?
         //User posts based on posts between time limit (24 hours) and time_diff (current time)
@@ -387,13 +391,15 @@ exports.newPost = (req, res) => {
  All likes, flags, new comments (with actions on those comments as well)
  get added here
  */
+ //Issues with user posts seem to exist here!?
+ //VersionError: No matching document found for ID "hash stuff" version 90 modifiedPaths "feedAction"
 exports.postUpdateFeedAction = (req, res, next) => {
-
+//Issues seem to be confusing id with ObjectID?
   User.findById(req.user.id, (err, user) => {
     //somehow user does not exist here
     if (err) { return next(err); }
 
-    console.log("@@@@@@@@@@@ TOP postID is  ", req.body.post_id);
+    console.log("@@@@@@@@@@@ TOP postID is  ", req.body.ObjectId);
 
     //find the object from the right post in feed
     var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == req.body.postID; });
@@ -403,12 +409,12 @@ exports.postUpdateFeedAction = (req, res, next) => {
     if(feedIndex==-1)
     {
       //Post does not exist yet in User DB, so we have to add it now
-      //console.log("$$$$$Making new feedAction Object! at post ", req.body.postID);
+      console.log("$$$$$Making new feedAction Object! at post ", req.body.postID);
       var cat = new Object();
       cat.post = req.body.postID;
       if(!(req.body.start))
         {
-          //console.log("!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!No start");
+          console.log("!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!No start");
         }
       cat.startTime = req.body.start;
       cat.rereadTimes = 0;
@@ -424,11 +430,11 @@ exports.postUpdateFeedAction = (req, res, next) => {
       //update to new StartTime
       if (req.body.start && (req.body.start > user.feedAction[feedIndex].startTime))
       {
-        //console.log("%%%%%% USER.feedAction.startTime  ", user.feedAction[feedIndex].startTime);
+        console.log("%%%%%% USER.feedAction.startTime  ", user.feedAction[feedIndex].startTime);
         user.feedAction[feedIndex].startTime = req.body.start;
         user.feedAction[feedIndex].rereadTimes++;
-        //console.log("%%%%%% NEW START time is now  ", user.feedAction[feedIndex].startTime);
-        //console.log("%%%%%% reRead counter is now  ", user.feedAction[feedIndex].rereadTimes);
+        console.log("%%%%%% NEW START time is now  ", user.feedAction[feedIndex].startTime);
+        console.log("%%%%%% reRead counter is now  ", user.feedAction[feedIndex].rereadTimes);
 
       }
 
@@ -436,16 +442,16 @@ exports.postUpdateFeedAction = (req, res, next) => {
       else if ((!user.feedAction[feedIndex].readTime)&&req.body.read && (req.body.read > user.feedAction[feedIndex].startTime))
       {
         let read = req.body.read - user.feedAction[feedIndex].startTime
-        //console.log("!!!!!New FIRST READ Time: ", read);
+        console.log("!!!!!New FIRST READ Time: ", read);
         user.feedAction[feedIndex].readTime = [read];
-        //console.log("!!!!!adding FIRST READ time [0] now which is  ", user.feedAction[feedIndex].readTime[0]);
+        console.log("!!!!!adding FIRST READ time [0] now which is  ", user.feedAction[feedIndex].readTime[0]);
       }
 
       //Already have a readTime Array, New READ event, need to add this to readTime array
       else if ((user.feedAction[feedIndex].readTime)&&req.body.read && (req.body.read > user.feedAction[feedIndex].startTime))
       {
         let read = req.body.read - user.feedAction[feedIndex].startTime
-        //console.log("%%%%%Add new Read Time: ", read);
+        console.log("%%%%%Add new Read Time: ", read);
         user.feedAction[feedIndex].readTime.push(read);
       }
 

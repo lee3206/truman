@@ -26,7 +26,6 @@ exports.checkBell = (req, res) => {
 if (req.user) {
 
     var user = req.user;
-
     Notification.find({ $or: [ { userPost: user.numPosts  }, { userReply: user.numReplies }, { actorReply: user.numActorReplies } ] })
         .populate('actor')
         .exec(function (err, notification_feed) {
@@ -217,7 +216,6 @@ exports.postSignup = (req, res, next) => {
  * Update profile information.
  */
 exports.postSignupInfo = (req, res, next) => {
-
 
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
